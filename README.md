@@ -1,4 +1,4 @@
-# BeerApp
+# Cervexa
 Es una tienda virtual de **bebidas alcohólicas** con un amplio catálogo de productos donde encontraras bebidas fermentadas, bebidas destiladas, bebidas fortificadas, licores y cremas.
 
 Dirigida a personas de género masculino y femenino entre 18 y 60 años localizados en la ciudad de Bucaramanga, Colombia.
