@@ -21,3 +21,4 @@ Estudiante de Desarrollo de Software y amante de la programación y del emprendi
 ### Jorge Andres Roa
 Tecnólogo en informatica, apasionado por el desarrollo web y los videojuegos, actualmente resido en la ciudad de Bogotá.
 ### Miguel Perez
+Pendiente...
