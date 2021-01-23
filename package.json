@@ -1,0 +1,27 @@
+{
+  "name": "grupo_5_cervexa",
+  "version": "1.0.0",
+  "description": "Es una tienda virtual de **bebidas alcohólicas** con un amplio catálogo de productos donde encontraras bebidas fermentadas, bebidas destiladas, bebidas fortificadas, licores y cremas.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silvahector/grupo_5_cervexa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silvahector/grupo_5_cervexa/issues"
+  },
+  "homepage": "https://github.com/silvahector/grupo_5_cervexa#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

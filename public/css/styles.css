@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    background-color: #f6f5f3;
+    box-sizing: border-box;
+    font-size: 10px;
+
+    /* Color Variables */
+    --primary-color: #444444;
+    --secondary-color: #b59049;
+    --tertiary-color: #ffffff;
+    /* Font Variables */
+    --primary-font: 'Roboto', sans-serif;
+    --secondary-font: 'Bellota', cursive;
+}
+
+body {
+    font-family: var(--primary-font);
+    font-size: 1.3rem;
+}
+
+.bar-message {
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    font-weight: 500;
+    margin: 0;
+    padding: .9rem;
+    text-align: center;
+}
+
+.header-container {
+    background: red;
+    height: 5.7rem;
+}
+
+.main-container {
+    background-color: var(--primary-color);
+}
