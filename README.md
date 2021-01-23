@@ -20,5 +20,3 @@ Dirigida a personas de género masculino y femenino entre 18 y 60 años localiza
 Estudiante de Desarrollo de Software y amante de la programación y del emprendimiento, 24 años, actualmente vive en la ciudad de Bucaramanga, Colombia.
 ### Jorge Andres Roa
 Tecnólogo en informatica, apasionado por el desarrollo web y los videojuegos, actualmente resido en la ciudad de Bogotá.
-### Miguel Perez
-Pendiente...
