@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Licores a domicilios 24hs | Entrega en minutos | Cervexa</title>
   <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/flickity.css">
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link
-    href="https://fonts.googleapis.com/css2?family=Questrial&family=Work+Sans:wght@100;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Unna:wght@400;700&family=Work+Sans:wght@100;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap"
     rel="stylesheet">
   <script src="https://kit.fontawesome.com/c094c4f2ad.js" crossorigin="anonymous"></script>
+  <script src="/js/flickity.pkgd.min.js"></script>
 </head>
-
 <body>
   <header>
     <p class="bar-message">¡Envíos gratis por compras superiores a $20.000!</p>
@@ -22,22 +22,30 @@
       <div class="menu-navbar-icon">
         <i class="secondary-color fas fa-bars fa-2x"></i>
       </div>
-      <h1 class="logo">
-        Cervexa
+      <h1 class="main-logo">
+        CERVEXA
       </h1>
       <div class="cart-navbar-icon">
         <i class="secondary-color fas fa-shopping-basket fa-2x"></i>
       </div>
     </div>
   </header>
-  <main class="main-container">
-    <div class="main-banner">
-      xD
-    </div>
-    <section class="container">
+  <main class="site-content">
+    <section class="main-banner">
+      <div class="banner-carousel" data-flickity='{"imagesLoaded": true}'>
+        <div class="carousel-cell">
+          <img class="banner-image" src="/images/Marquee-Desktop-BHTB21_2530x1400.webp">
+        </div>
+        <div class="carousel-cell"></div>
+        <div class="carousel-cell"></div>
+        <div class="carousel-cell"></div>
+        <div class="carousel-cell"></div>
+      </div>
+    </section>
+    <section class="our-special-services container">
         <header class="section-header">
           <p class="section-description">ENCUENTRA TU BEBIDA FAVORITA</p>
-          <h2 class="section-title">DISFRUTA LA EXPERIENCIA</h2>
+          <h2 class="primary-title">DISFRUTA LA EXPERIENCIA</h2>
         </header>
         <div class="items-container">
           <article class="item-details">
@@ -62,23 +70,25 @@
           </article>
       </div>
     </section>
-    <section class="container highlighted-banners">
-      <h2 hidden>Destacados</h2>
-      <article class="highlighted-item">
-        Uno
+    <section class="highlighted-banners container">
+      <h2 hidden>Productos Especiales</h2>
+      <article class="highlighted-item hl-item1">
+        <h3 class="hl-name primary-title">RARO & EXCEPCIONAL</h3>
+        <p class="hl-description secondary-text">Explore licores excepcionales, sofisticados y de lujo.</p>
       </article>
-      <article class="highlighted-item">
-        Dos
+      <article class="highlighted-item hl-item2">
+        <h3 class="hl-name primary-title">THE MACALLAN</h3>
+        <p class="hl-description secondary-text">Un Whisky para cualquier ocasión. Prueba The Mcallan.</p>
       </article>
     </section>
-    <section class="products-container">
+    <section class="highlighted-products">
       <div class="container">
         <header class="section-header">
         <p class="section-description">EXPLORA NUESTROS</p>
-        <h2 class="section-title">PRODUCTOS DESTACADOS</h2>
+        <h2 class="primary-title">PRODUCTOS DESTACADOS</h2>
       </header>
-      <div class="items-container">
-        <article class="item-details">
+      <div class="products-container">
+        <article class="product-details">
           <div class="item-image-container">
             <img class="item-image" src="./images/oldforester1920_1_360x.webp" alt="x"/>
           </div>
@@ -87,7 +97,7 @@
           <p class="item-number">$69.00</p>
           <button class="standard-button mt-1">COMPRAR</button>
         </article>
-        <article class="item-details">
+        <article class="product-details">
           <div class="item-image-container">
             <img class="item-image" src="./images/oldforester1920_1_360x.webp" alt="x"/>
           </div>
@@ -96,7 +106,7 @@
           <p class="item-number">$69.00</p>
           <button class="standard-button mt-1">COMPRAR</button>
         </article>
-        <article class="item-details">
+        <article class="product-details">
           <div class="item-image-container">
             <img class="item-image" src="./images/oldforester1920_1_360x.webp" alt="x"/>
           </div>
@@ -105,7 +115,7 @@
           <p class="item-number">$69.00</p>
           <button class="standard-button mt-1">COMPRAR</button>
         </article>
-        <article class="item-details">
+        <article class="product-details">
           <div class="item-image-container">
             <img class="item-image" src="./images/oldforester1920_1_360x.webp" alt="x"/>
           </div>
@@ -133,7 +143,7 @@
     <section class="container">
       <header class="section-header">
         <p class="section-description">INSCRRIBETE PARA RECIBIR</p>
-        <h2 class="section-title">NUESTRO BOLETÍN</h2>
+        <h2 class="primary-title">NUESTRO BOLETÍN</h2>
       </header>
       <div class="items-container">
         <form class="txt-center">
