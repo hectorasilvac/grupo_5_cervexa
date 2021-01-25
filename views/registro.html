@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/flickity.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/registro.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unna:wght@400;700&family=Work+Sans:wght@100;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/c094c4f2ad.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/flickity.pkgd.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <p class="bar-message">
+        ¡Envíos gratis por compras superiores a $20.000!
+      </p>
+      <div class="container header-container">
+        <div class="menu-navbar-icon">
+          <i class="secondary-color fas fa-bars fa-2x"></i>
+        </div>
+        <h1 class="main-logo">CERVEXA</h1>
+        <div class="cart-navbar-icon">
+          <i class="secondary-color fas fa-shopping-basket fa-2x"></i>
+        </div>
+      </div>
+    </header>
+    <form action="#" class="general-form">
+        <div class="title-form">
+            <div class="create-acount">
+                <h1>CREAR CUENTA</h1>
+            </div>
+            <!-- <div class="logo">
+                <h1>CERVEXA</h1>
+            </div>               -->
+        </div>
+        <div class="data-form">
+            <div class="name-last">
+                <div>           
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" placeholder="">
+                </div>
+                <div> 
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" name="apellidos" placeholder="">
+                </div>            
+            </div>            
+            <div>   
+                <label for="nombre">Identificación</label>
+                <input type="text" name="identificacion" placeholder="">
+            </div>
+            <div>
+                <label for="nombre">Email</label>
+                <input type="email" name="email" placeholder="">
+            </div>
+            <div  class="contraseñas">
+                <div>
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" name="contraseña" placeholder="">
+                </div>
+                <div>
+                    <label for="conf-contraseña">Confirmar Contraseña</label>
+                    <input type="password" name="conf-contraseña" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="footer-form">
+            <button type="submit" id="button-register" name="button-register">Registrarse</button>
+            <label for="">Al registrarse acepta nuestros terminos y condiciones*</label>
+        </div>
+    </form>
+    <footer class="site-footer">
+      <section class="container">
+        <header class="section-header">
+          <p class="section-description">INSCRRIBETE PARA RECIBIR</p>
+          <h2 class="primary-title">NUESTRO BOLETÍN</h2>
+        </header>
+        <div class="items-container">
+          <form class="txt-center">
+            <input
+              class="standard-input"
+              type="email"
+              placeholder="Ingresa tu correo elétronico..."
+            />
+            <button class="special-button">Enviar</button>
+            <small class="small-description"
+              >Debes tener más de 18 años para usar nuestro sitio e inscribirte
+              en las promociones.</small
+            >
+          </form>
+        </div>
+        <hr class="mt-2" />
+        <ul class="links-list">
+          <li class="list-content">
+            <a class="footer-link" href="#">Sobre nosotros</a>
+          </li>
+          <li class="list-content">
+            <a class="footer-link" href="#">Preguntas frecuentes</a>
+          </li>
+          <li class="list-content">
+            <a class="footer-link" href="#">Políticas de privacidad</a>
+          </li>
+          <li class="list-content">
+            <a class="footer-link" href="#">Términos y condiciones</a>
+          </li>
+        </ul>
+        <p class="section-description txt-center fsize-1">
+          &copy; 2021 CERVEXA
+        </p>
+      </section>
+    </footer>
+  </body>
+</html>

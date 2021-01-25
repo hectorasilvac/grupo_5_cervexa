@@ -1,0 +1,160 @@
+:root{
+    /* Color Variables */
+    --primary-color: #444444;
+    --secondary-color: #b59049;
+    --tertiary-color: #ffffff;
+    /* Font Variables */
+    --primary-font: 'Work Sans', sans-serif;
+    --secondary-font: 'Unna', serif;
+    --tertiary-font: 'Roboto', sans-serif;
+}
+.general-form{
+    border: var(--secondary-color) 2px solid;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.title-form{
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: space-between;       
+}
+
+.title-form .logo{
+    font-family:var(--secondary-font);
+    text-align: center;
+    width: 50%;
+}
+.title-form .create-acount{
+    width: 100%;
+    text-align: center;
+    font-family: var(--secondary-font);
+    background-color:var(--secondary-color);
+    color: white;
+    border-radius:5px 5px 0 0;
+} 
+.data-form{
+    color: var(--secondary-color);
+    font-family:var(--tertiary-font);
+    font-weight: bold;   
+    display: flex; 
+    flex-direction: column;   
+    padding-top: 15px;
+}
+.data-form .name-last{
+    display: flex;
+    flex-direction: column;    
+    padding:0;
+}
+.data-form .contraseñas{
+    display: flex;
+    flex-direction: column;    
+    padding:0;
+}
+.data-form div{
+    display: flex;
+    padding: 15px;
+}
+.data-form div input{
+    width: 75%;
+}
+.data-form label{
+    width: 25%;
+    text-align: left;
+    margin-right: 9px;
+    display: flex;
+    align-self: center;
+}
+.data-form input{
+    border: 0;
+    background-color:white;
+    border-bottom: solid rgb(182, 180, 180) 2px;
+}
+.footer-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+.data-form .contraseñas{
+    width: 100%;
+}
+.footer-form button{
+    background-color:var(--secondary-color);
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 5px;
+    font-family:var(--secondary-font);
+}
+.footer-form button:hover{
+    background-color:white;
+    border: var(--secondary-color) 2px solid;
+    color: var(--secondary-color);
+    font-weight:bold;
+}
+.footer-form label{
+    text-align: center;
+    font-family: var(--tertiary-font);
+    margin-left: 10px;
+    
+}
+@media (min-width:480px){
+    .general-form{
+        padding: 15px;
+        margin: 15px;
+    }
+    .create-acount h1{
+        font-size: 28px;
+    }
+    .data-form .name-last{
+        flex-direction: row;
+    }
+    .data-form .name-last div{
+        width: 50%;
+        padding:15px;        
+    }
+    .data-form .name-last label{
+        width: 40%;
+        margin: 0;
+        text-align: center;
+    }
+    .data-form .name-last input{
+        width: 60%;
+    }    
+    .data-form .contraseñas{
+        flex-direction: row;
+    }
+    .data-form .contraseñas div{
+        width: 50%;
+        padding:15px;
+    }    
+    .data-form .contraseñas label{
+        width: 45%;
+        margin: 0;
+        text-align: left;
+    }
+    .data-form .contraseñas input{
+        width: 55%;
+    }    
+    .footer-form{
+        justify-content: space-between;
+    }
+    .footer-form button{
+        padding: 10px; 
+        font-size: 20px;       
+    }
+    .footer-form label{
+        font-size: 16px;        
+    }
+    .data-form label{
+        font-size: 16px;
+        width: 30%;
+    }
+    .data-form input{
+        font-size: 17px;
+        width: 70%;        
+    }
+}
+
