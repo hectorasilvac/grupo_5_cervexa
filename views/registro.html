@@ -1,123 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/normalize.css" />
-    <link rel="stylesheet" href="/css/flickity.css" />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <link rel="stylesheet" href="/css/registro.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Unna:wght@400;700&family=Work+Sans:wght@100;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/c094c4f2ad.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="/js/flickity.pkgd.min.js"></script>
-  </head>
-  <body>
+    <script src="https://kit.fontawesome.com/e04cd2d7e3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/formulario.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
     <header>
-      <p class="bar-message">
-        ¡Envíos gratis por compras superiores a $20.000!
-      </p>
-      <div class="container header-container">
-        <div class="menu-navbar-icon">
-          <i class="secondary-color fas fa-bars fa-2x"></i>
-        </div>
-        <h1 class="main-logo">CERVEXA</h1>
-        <div class="cart-navbar-icon">
-          <i class="secondary-color fas fa-shopping-basket fa-2x"></i>
-        </div>
-      </div>
-    </header>
-    <form action="#" class="general-form">
-        <div class="title-form">
-            <div class="create-acount">
-                <h1>CREAR CUENTA</h1>
-            </div>
-            <!-- <div class="logo">
-                <h1>CERVEXA</h1>
-            </div>               -->
-        </div>
-        <div class="data-form">
-            <div class="name-last">
-                <div>           
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" placeholder="">
-                </div>
-                <div> 
-                    <label for="apellidos">Apellidos</label>
-                    <input type="text" name="apellidos" placeholder="">
-                </div>            
-            </div>            
-            <div>   
-                <label for="nombre">Identificación</label>
-                <input type="text" name="identificacion" placeholder="">
-            </div>
-            <div>
-                <label for="nombre">Email</label>
-                <input type="email" name="email" placeholder="">
-            </div>
-            <div  class="contraseñas">
-                <div>
-                    <label for="contraseña">Contraseña</label>
-                    <input type="password" name="contraseña" placeholder="">
-                </div>
-                <div>
-                    <label for="conf-contraseña">Confirmar Contraseña</label>
-                    <input type="password" name="conf-contraseña" placeholder="">
-                </div>
-            </div>
-        </div>
-        <div class="footer-form">
-            <button type="submit" id="button-register" name="button-register">Registrarse</button>
-            <label for="">Al registrarse acepta nuestros terminos y condiciones*</label>
-        </div>
-    </form>
-    <footer class="site-footer">
-      <section class="container">
-        <header class="section-header">
-          <p class="section-description">INSCRRIBETE PARA RECIBIR</p>
-          <h2 class="primary-title">NUESTRO BOLETÍN</h2>
-        </header>
-        <div class="items-container">
-          <form class="txt-center">
-            <input
-              class="standard-input"
-              type="email"
-              placeholder="Ingresa tu correo elétronico..."
-            />
-            <button class="special-button">Enviar</button>
-            <small class="small-description"
-              >Debes tener más de 18 años para usar nuestro sitio e inscribirte
-              en las promociones.</small
-            >
-          </form>
-        </div>
-        <hr class="mt-2" />
-        <ul class="links-list">
-          <li class="list-content">
-            <a class="footer-link" href="#">Sobre nosotros</a>
-          </li>
-          <li class="list-content">
-            <a class="footer-link" href="#">Preguntas frecuentes</a>
-          </li>
-          <li class="list-content">
-            <a class="footer-link" href="#">Políticas de privacidad</a>
-          </li>
-          <li class="list-content">
-            <a class="footer-link" href="#">Términos y condiciones</a>
-          </li>
-        </ul>
-        <p class="section-description txt-center fsize-1">
-          &copy; 2021 CERVEXA
+        <p class="bar-message">
+          ¡Envíos gratis por compras superiores a $20.000!
         </p>
-      </section>
-    </footer>
-  </body>
+        <div class="container header-container">
+          <div class="menu-navbar-icon">
+            <i class="secondary-color fas fa-bars fa-2x"></i>
+          </div>
+          <h1 class="main-logo">CERVEXA</h1>
+          <div class="cart-navbar-icon">
+            <i class="secondary-color fas fa-shopping-basket fa-2x"></i>
+          </div>
+        </div>
+      </header>
+    <main>
+        <form action="" class="formulario" id="formulario">
+
+            
+            <!--? Grupo: Nombre -->
+            <div class="formulario__grupo" id="grupo__nombre">
+                <label for="nombre" class="formulario__label">Nombre</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="John">
+                    <i class=" formulario__validacion-estado far fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 digitos y solmente puede contener números, letras y guion bajo.</p>
+            </div>
+
+            <!--? Grupo: apellidos -->
+            <div class="formulario__grupo" id="grupo__apellidos">
+                <label for="apellidos" class="formulario__label">Apellidos</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="apellidos" id="apellidos" placeholder="Doe">
+                    <i class=" formulario__validacion-estado far fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El apellido tiene que ser de 3 a 16 digitos y solmente puede contener números, letras y guion bajo.</p>
+            </div>
+
+            <!--? Grupo: Contraseña-->
+            <div class="formulario__grupo" id="grupo__password">
+                <label for="password" class="formulario__label">Contraseña</label>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password" id="password" >
+                    <i class=" formulario__validacion-estado far fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 digitos.</p>
+            </div>
+
+            <!--? Grupo: Contraseña2 -->
+            <div class="formulario__grupo" id="grupo__password2">
+                <label for="password2" class="formulario__label">Repetir Contraseña</label>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password2" id="password2" >
+                    <i class=" formulario__validacion-estado far fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Ambas contraseñas deben ser iguales</p>
+            </div>
+
+            <!--? Grupo: Identificación -->
+            <div class="formulario__grupo" id="grupo__identificacion">
+                <label for="identificacion" class="formulario__label">Identificación</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="identificacion" id="identificacion" placeholder="3134567893">
+                    <i class=" formulario__validacion-estado far fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La identificación solo puede contener números y el maximo son 14 digitos.</p>
+            </div>
+            
+            <!--? Grupo: Correo Electronico -->
+            <div class="formulario__grupo" id="grupo__correo">
+                <label for="correo" class="formulario__label">Correo Electrónico</label>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                    <i class=" formulario__validacion-estado far fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El correo solo puede contener letras, números, puntos, guiones y guien bajo.</p>
+            </div>
+
+            <!--? Grupo: Temrinos y Condiciones -->
+            <div class="formulario__grupo" id="grupo__terminos">
+                <label class="formulario__label">
+                    <input class="formulario__checkbox" type="checkbox" name="temrinos" id="terminos">
+                    Acepto los terminos y condiciones.
+                </label>
+            </div>
+
+            <div class="formulario__mensaje" id="formulario__mensaje">
+                    <p><i class="fas fa-exclamation-triangle"></i> <b>Error</b> Por favor diligencie el formulario correctamente. </p>
+            </div>
+            <div class="formulario__grupo formulario__grupo-btn-enviar">
+                <button type="submit" class="formulario__btn">Enviar</button>
+                <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">El formulario se envio exitosamente</p>
+            </div>
+        </form>
+    </main>
+    <footer class="site-footer">
+        <section class="container">
+          <header class="section-header">
+            <p class="section-description">INSCRRIBETE PARA RECIBIR</p>
+            <h2 class="primary-title">NUESTRO BOLETÍN</h2>
+          </header>
+          <div class="items-container">
+            <form class="txt-center">
+              <input
+                class="standard-input"
+                type="email"
+                placeholder="Ingresa tu correo elétronico..."
+              />
+              <button class="special-button">Enviar</button>
+              <small class="small-description"
+                >Debes tener más de 18 años para usar nuestro sitio e inscribirte
+                en las promociones.</small
+              >
+            </form>
+          </div>
+          <hr class="mt-2" />
+          <ul class="links-list">
+            <li class="list-content">
+              <a class="footer-link" href="#">Sobre nosotros</a>
+            </li>
+            <li class="list-content">
+              <a class="footer-link" href="#">Preguntas frecuentes</a>
+            </li>
+            <li class="list-content">
+              <a class="footer-link" href="#">Políticas de privacidad</a>
+            </li>
+            <li class="list-content">
+              <a class="footer-link" href="#">Términos y condiciones</a>
+            </li>
+          </ul>
+          <p class="section-description txt-center fsize-1">
+            &copy; 2021 CERVEXA
+          </p>
+        </section>
+      </footer>
+    <script src="/js/formulario.js"></script>
+</body>
 </html>

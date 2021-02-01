@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/e04cd2d7e3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/formulario.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <p class="bar-message">
+          ¡Envíos gratis por compras superiores a $20.000!
+        </p>
+        <div class="container header-container">
+          <div class="menu-navbar-icon">
+            <i class="secondary-color fas fa-bars fa-2x"></i>
+          </div>
+          <h1 class="main-logo">CERVEXA</h1>
+          <div class="cart-navbar-icon">
+            <i class="secondary-color fas fa-shopping-basket fa-2x"></i>
+          </div>
+        </div>
+      </header>
+    <main>
+        <form action="" class="formulario" id="formulario">
+
+            <!--? Grupo: Correo Electronico -->
+            <div class="formulario__grupo" id="grupo__correo">
+              <label for="correo" class="formulario__label">Correo Electrónico</label>
+              <div class="formulario__grupo-input">
+                  <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                  <i class=" formulario__validacion-estado far fa-times-circle"></i>
+              </div>
+              <p class="formulario__input-error">El correo solo puede contener letras, números, puntos, guiones y guien bajo.</p>
+          </div>
+
+            <!--? Grupo: Contraseña-->
+            <div class="formulario__grupo" id="grupo__password">
+                <label for="password" class="formulario__label">Contraseña</label>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password" id="password" >
+                    <i class=" formulario__validacion-estado far fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">La contraseña tiene que ser de 4 a 12 digitos.</p>
+            </div>  
+
+            <div class="formulario__mensaje" id="formulario__mensaje">
+                    <p><i class="fas fa-exclamation-triangle"></i> <b>Error</b> Ingrese los datos correctamente.</p>                    
+            </div>
+            <div class="formulario__mensaje2" id="formulario__mensaje2">
+                <p><i class="fas fa-exclamation-triangle"></i> <b>Atención</b> Por favor registrese.</p>              
+            </div>
+            
+            <div class="formulario__grupo formulario__grupo-btn-enviar">
+                <button type="submit" class="formulario__btn">Ingresar</button>                
+                <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">El ingreso fue exitoso</p>
+            </div>
+            <div class="formulario__grupo formulario__grupo-btn-enviar">
+              <button onclick="location.href='/registro'"  class="formulario__btn">Registrarse</button>                
+            </div>
+        </form>
+    </main>
+    <footer class="site-footer">
+        <section class="container">
+          <header class="section-header">
+            <p class="section-description">INSCRRIBETE PARA RECIBIR</p>
+            <h2 class="primary-title">NUESTRO BOLETÍN</h2>
+          </header>
+          <div class="items-container">
+            <form class="txt-center">
+              <input
+                class="standard-input"
+                type="email"
+                placeholder="Ingresa tu correo elétronico..."
+              />
+              <button class="special-button">Enviar</button>
+              <small class="small-description"
+                >Debes tener más de 18 años para usar nuestro sitio e inscribirte
+                en las promociones.</small
+              >
+            </form>
+          </div>
+          <hr class="mt-2" />
+          <ul class="links-list">
+            <li class="list-content">
+              <a class="footer-link" href="#">Sobre nosotros</a>
+            </li>
+            <li class="list-content">
+              <a class="footer-link" href="#">Preguntas frecuentes</a>
+            </li>
+            <li class="list-content">
+              <a class="footer-link" href="#">Políticas de privacidad</a>
+            </li>
+            <li class="list-content">
+              <a class="footer-link" href="#">Términos y condiciones</a>
+            </li>
+          </ul>
+          <p class="section-description txt-center fsize-1">
+            &copy; 2021 CERVEXA
+          </p>
+        </section>
+      </footer>
+    <script src="/js/login.js"></script>
+</body>
+</html>
