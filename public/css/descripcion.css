@@ -5,10 +5,19 @@ main{
     flex-direction: column;    
     padding: 25px 0 25px 0;
 }
+body{
+    font-family: 'Roboto', sans-serif;
+    background: #e5e5e5;
+}
+.site-header{
+    background-color: #f6f5f3;
+}
 
-.main-logo a{
+.logo_button{
     text-decoration: none;
     color: #b59049;
+    font-family:'Unna', serif;
+    font-size: 18px;
 }
 
 .image_description{

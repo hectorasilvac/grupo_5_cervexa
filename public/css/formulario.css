@@ -12,6 +12,17 @@ main{
     padding: 40px;
 }
 
+.logo_button{
+    text-decoration: none;
+    color: #b59049;
+    font-family:'Unna', serif;
+    font-size: 18px;
+}
+
+.site-header{
+    background-color: #f6f5f3;
+}
+
 .formulario{
     display: grid;
     grid-template-columns:1fr 1fr;

@@ -6,25 +6,62 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/e04cd2d7e3.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/formulario.css">
+    <link rel="stylesheet" href="/css/normalize.css">    
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/flickity.css">
+    <link rel="stylesheet" href="/css/formulario.css">
 </head>
 <body>
-    <header>
-        <p class="bar-message">
-          ¡Envíos gratis por compras superiores a $20.000!
-        </p>
-        <div class="container header-container">
-          <div class="menu-navbar-icon">
-            <i class="secondary-color fas fa-bars fa-2x"></i>
-          </div>
-          <h1 class="main-logo">CERVEXA</h1>
-          <div class="cart-navbar-icon">
-            <i class="secondary-color fas fa-shopping-basket fa-2x"></i>
-          </div>
-        </div>
-      </header>
+  <header>
+    <p class="bar-message">¡Envíos gratis por compras superiores a $20.000!</p>
+    <div class="site-header">
+      <div class="menu-navbar-icon">
+        <i class="secondary-color fas fa-bars fa-2x"></i>
+      </div>
+      <a class="logo_button" href="/"><h1>CERVEXA</h1></a>
+      <div class="cart-navbar-icon">
+        <i class="secondary-color fas fa-shopping-basket fa-2x"></i>
+      </div>
+      <form>
+        <input type="search" placeholder="Buscar producto, marca, categoría..." data-3>
+        <button data-1><i class="fas fa-search"></i></button>
+      </form>
+      <nav class="option-menu">
+        <ul data-3>
+          <li>
+            <a href="#" data-1>
+              <i class="fas fa-gift fa-2x"></i>
+              <span>Regalos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-1>
+              <i class="fas fa-shopping-cart fa-2x"></i>
+              <span>Carrito</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-1>
+              <i class="fas fa-user-alt fa-2x"></i>
+              <span>Cuenta</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav class="category-menu">
+        <ul data-4>
+          <li><a href="#" data-1>Descubrir</a></li>
+          <li><a href="#" data-1>Promociones</a></li>
+          <li><a href="#" data-1>Cerveza</a></li>
+          <li><a href="#" data-1>Vino</a></li>
+          <li><a href="#" data-1>Ron</a></li>
+          <li><a href="#" data-1>Whisky</a></li>
+          <li><a href="#" data-1>Tequila</a></li>
+          <li><a href="#" data-1>Alimentos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
     <main>
         <form action="" class="formulario" id="formulario">
 
