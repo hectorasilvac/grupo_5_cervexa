@@ -20,3 +20,9 @@ Dirigida a personas de género masculino y femenino entre 18 y 60 años localiza
 Estudiante de Desarrollo de Software y amante de la programación y del emprendimiento, 24 años, actualmente vive en la ciudad de Bucaramanga, Colombia.
 ### Jorge Andres Roa
 Tecnólogo en informatica, apasionado por el desarrollo web y los videojuegos, actualmente resido en la ciudad de Bogotá.
+
+## Tablero
+El proyecto esta siendo organizado mediante un tablero de Trello, se puede visualizar el progreso y tareas realizadas dando clic [aquí](https://trello.com/b/IgXmwxws/cervexa).
+
+## Sitio Web
+Cervexa se encuentra alojado en Heroku, se puede visualizar en vivo dando clic [aquí](https://cervexa.herokuapp.com/).
