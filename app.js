@@ -14,6 +14,9 @@ app.listen(process.env.PORT || 3000, () => {
 app.get('/', function(req, res) {
     res.sendFile(path.resolve(__dirname, './views/home.html'));
 });
+app.get('/cart', function(req, res) {
+    res.sendFile(path.resolve(__dirname, './views/cart.html'));
+});
 app.get('/registro', function(req, res) {
     res.sendFile(path.resolve(__dirname, './views/registro.html'));
 });
