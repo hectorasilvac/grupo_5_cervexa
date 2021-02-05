@@ -25,4 +25,4 @@ Tecnólogo en informatica, apasionado por el desarrollo web y los videojuegos, a
 El proyecto esta siendo organizado mediante un tablero de Trello, se puede visualizar el progreso y tareas realizadas dando clic [aquí](https://trello.com/b/IgXmwxws/cervexa).
 
 ## Sitio Web
-Cervexa se encuentra alojado en Heroku, se puede visualizar en vivo dando clic [aquí](https://cervexa.herokuapp.com/).
+Cervexa se encuentra alojado en Heroku, se puede visualizar en vivo dando clic [aquí](https://cervexa.me/).
