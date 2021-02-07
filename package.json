@@ -4,7 +4,7 @@
   "description": "Es una tienda virtual de **bebidas alcohólicas** con un amplio catálogo de productos donde encontraras bebidas fermentadas, bebidas destiladas, bebidas fortificadas, licores y cremas.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/silvahector/grupo_5_cervexa#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "xpress": "^2.4.6"
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

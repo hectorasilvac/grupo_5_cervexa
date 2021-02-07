@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+  <main data-1>
+    <section class="shopping-cart">
+      <h2 data-1>Productos en la cesta</h2>
+      <div class="cart-content">
+        <article class="cart-item">
+          <img src="/images/no-image.png" alt="Image" data-1>
+          <p data-1>Dartington</p>
+          <h3 data-1>Dartington Wine & Bar Tumbler Pair</h3>
+          <p data-2>$19.00</p>
+          <form>
+            <button data-2>&#45;</button>
+            <input type="number" value="1" data-1>
+            <button data-2>&#43;</button>
+          </form>
+          <button data-3><i class="far fa-trash-alt fa-2x"></i></button>
+        </article>
+        <article class="cart-item">
+          <img src="/images/no-image.png" alt="Image" data-1>
+          <p data-1>Dartington</p>
+          <h3 data-1>Dartington Wine & Bar Tumbler Pair</h3>
+          <p data-2>$19.00</p>
+          <form>
+            <button data-2>&#45;</button>
+            <input type="number" value="1" data-1>
+            <button data-2>&#43;</button>
+          </form>
+          <button data-3><i class="far fa-trash-alt fa-2x"></i></button>
+        </article>
+        <article class="cart-invoice">
+          <p data-3>
+            <span>SUBTOTAL</span>
+            <span>$76.00</span>
+          </p>
+          <a href="#" data-3>Ir a Pagar</a>
+          <a href="#" data-2>Continuar Comprando</a>
+        </article>
+      </div>
+    </section>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+</html>
