@@ -1,14 +1,14 @@
 *{
     box-sizing: border-box;
 }
-body{
+.body_formulario{
     font-family: 'Roboto', sans-serif;
     background: #e5e5e5;
 }
 header{
     background-color: #f6f5f3;
 }
-main{
+.main_formulario{
     max-width: 800px;
     width: 90%;
     margin: auto;

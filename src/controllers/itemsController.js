@@ -1,7 +1,10 @@
 const path = require('path');
 let productsController = {
-    show: (req, res) => {
-        res.sendFile(path.resolve(__dirname, '../views/items/details.html'));
+    details: (req, res) => {
+        let title = 'Descripcion del producto';
+        res.render('items/details',{
+            'title': title
+        })
     },
 }
 
