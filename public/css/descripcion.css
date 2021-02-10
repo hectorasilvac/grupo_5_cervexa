@@ -1,4 +1,4 @@
-main{
+.main_details{
     width: 70%;
     margin: auto;
     display: flex;
@@ -8,7 +8,7 @@ main{
 header{
     background-color: #f6f5f3;
 }
-body{
+.body_details{
     font-family: 'Roboto', sans-serif;
     /* background: #e5e5e5; */
     background-color: white;
@@ -97,7 +97,7 @@ body{
 /*? MEDIAQUERYS  */
 
 @media(min-width: 600px){
-    main{
+    .main_details{
         width: 70%;
     }
     .image_description img{
@@ -106,7 +106,7 @@ body{
 }
 
 @media(min-width: 768px){
-    main{
+    .main_details{
         width: 70%;
         flex-direction: row;
         padding: 25px 0 25px 0;
@@ -137,7 +137,7 @@ body{
 
 }
 @media(min-width:1200px){
-    main{
+    .main_details{
         width: 70%;
     }
     .product_description p{
