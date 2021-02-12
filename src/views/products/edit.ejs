@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <% if (product === null) { %>
+            <form action="/products/create" method="POST">
+
+        <% } else { %>
+        <form action="/products/edit/<%= product?.id %>/save?_method=PUT" method="POST">
+        <% } %>
+            <p>
+                <label for="name">Nombre del producto:</label>
+                <input id="name" name="name" type="text" value="<%= product?.name %>">
+            </p>
+            <p>
+                <label for="description">Descripción:</label>
+                <input id="description" name="description" type="text" value="<%= product?.description %>">
+            </p>
+            <p>
+                <label for="image">Imagen:</label>
+                <input id="image" name="image" type="text" value="<%= product?.image %>">
+            </p>
+            <p>
+                <label for="category">Categoría:</label>
+                <input id="category" name="category" type="text" value="<%= product?.category %>">
+            </p>
+            <p>
+                <label for="price">Precio:</label>
+                <input id="price" name="price" type="number" value="<%= product?.price %>">
+            </p>
+            <button type="reset">Limpiar</button>
+            <button type="submit">Guardar</button>
+        </form>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>
