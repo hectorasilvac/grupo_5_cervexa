@@ -112,9 +112,19 @@ input[data-3] {
     width: 83%;
 }
 
+input[data-4] {
+    border: .1rem solid var(--secondary-color);
+    max-width: 100%;
+    padding: .8rem;
+}
+
 
 main[data-1] {
     background-color: #e7e2d9;
+}
+
+main[data-2] {
+    background-color: white;
 }
 
 p[data-1] {
@@ -122,7 +132,7 @@ p[data-1] {
     font-family: var(--primary-font);
     font-size: 1.2rem;
     font-weight: 600;
-    margin: 0;
+    margin: .6rem 0 .4rem 0;
     text-transform: uppercase;
 }
 
@@ -138,6 +148,18 @@ p[data-2] {
 p[data-3] {
     color: var(--secondary-color);
     display: flex;
+}
+
+p[data-4] {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+
+section[data-1] {
+    max-width: 120rem;
+    padding: 1.6rem;
+    margin: 0 auto;
 }
 
 ul[data-3] {
@@ -384,6 +406,10 @@ ul[data-4] {
     font-weight: 600;
     padding: 1.6rem 0;
     text-transform: uppercase;
+}
+
+.edit-product > h2 {
+    text-align: center;
 }
 
 .main-banner {

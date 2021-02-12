@@ -5,9 +5,7 @@
     flex-direction: column;    
     padding: 25px 0 25px 0;
 }
-header{
-    background-color: #f6f5f3;
-}
+
 .body_details{
     font-family: 'Roboto', sans-serif;
     /* background: #e5e5e5; */

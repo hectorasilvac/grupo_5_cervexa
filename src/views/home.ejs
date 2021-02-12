@@ -67,42 +67,19 @@
           <h2 class="primary-title">PRODUCTOS DESTACADOS</h2>
         </header>
         <div class="products-container">
+          <% products.forEach( product => { %>
           <article class="product-details">
+            <a href="/products/info/<%= product.id %>" data-1>
             <div class="item-image-container">
-              <a href="/items/details"><img class="item-image" src="./images/oldforester1920_1_360x.webp" alt="x" /></a>
+              <img class="item-image" src="<%= product.image %>>" alt="Imagen de Producto" />
             </div>
-            <p class="item-description">OLD FORESTER</p>
-            <h3 class="item-title">OLD FORESTER 1920 PHIBITION STYLE</h3>
-            <p class="item-number">$69.00</p>
+            <p data-1><%= product.category %></p>
+            <h3 class="item-title"><%= product.name %></h3>
+            <p class="item-number">$<%= product.price  %></p>
+          </a>
             <button class="btn-primary mt-1">COMPRAR</button>
           </article>
-          <article class="product-details">
-            <div class="item-image-container">
-              <a href="/items/details"><img class="item-image" src="./images/oldforester1920_1_360x.webp" alt="x" /></a>
-            </div>
-            <p class="item-description">OLD FORESTER</p>
-            <h3 class="item-title">OLD FORESTER 1920 PHIBITION STYLE</h3>
-            <p class="item-number">$69.00</p>
-            <button class="btn-primary mt-1">COMPRAR</button>
-          </article>
-          <article class="product-details">
-            <div class="item-image-container">
-              <a href="/items/details"><img class="item-image" src="./images/oldforester1920_1_360x.webp" alt="x" /></a>
-            </div>
-            <p class="item-description">OLD FORESTER</p>
-            <h3 class="item-title">OLD FORESTER 1920 PHIBITION STYLE</h3>
-            <p class="item-number">$69.00</p>
-            <button class="btn-primary mt-1">COMPRAR</button>
-          </article>
-          <article class="product-details">
-            <div class="item-image-container">
-              <a href="/items/details"><img class="item-image" src="./images/oldforester1920_1_360x.webp" alt="x" /></a>
-            </div>
-            <p class="item-description">OLD FORESTER</p>
-            <h3 class="item-title">OLD FORESTER 1920 PHIBITION STYLE</h3>
-            <p class="item-number">$69.00</p>
-            <button class="btn-primary mt-1">COMPRAR</button>
-          </article>
+          <% }); %>
         </div>
       </div>
     </section>
