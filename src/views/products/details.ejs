@@ -3,24 +3,17 @@
   <%- include('../partials/head') %>
 <body class="body_details">
   <%- include('../partials/header') %> 
-    <main class="main_details">
-      <div class="image_description">
-        <img src="<%= product.image %>" alt="">
-      </div>
-      <div class="right_description">
-        <div class="product_name">
-          <h2><%= product.name %></h2>
-        </div>
-        <div class="product_description">
-          <p><%= product.description %></p>
-        </div>
-        <div class="product_price">
-          <p><%= product.price %></p>
-        </div>
-        <div class="button_car">
-          <button type="submit" onclick="">Agregar al Carrito</button>
-        </div>
-      </div>     
+    <main data-2>
+      <section data-1>
+        <h2 hidden>Detalle de Producto</h2>
+        <article>
+          <img src="<%= product.image %>" alt="<%= product.name %>" data-1>
+          <p><%= product.category %></p>
+          <h3 data-1><%= product.name %></h3>
+          <p data-5><%= product.price %></p>
+          <button data-5>Agregar al Carrito</button>
+        </article>
+      </section>
     </main>
     <%- include('../partials/footer') %>
     <script src="/js/descripcion.js"></script>

@@ -74,6 +74,34 @@ button[data-3] {
     border: none;
 }
 
+button[data-4] {
+    color: var(--secondary-color);
+    cursor: pointer;
+    background-color: white;
+    border: .1rem solid var(--secondary-color);
+    font-weight: 600;
+    padding: 1rem;
+    transition: all 500ms;
+    width: auto;
+}
+
+button[data-4]:hover {
+    color: white;
+    background-color: var(--secondary-color);
+}
+
+button[data-5] {
+    background-color: var(--secondary-color);
+    border: .1rem solid var(--secondary-color);
+    color: white;
+    font-family: var(--secondary-font);
+    font-size: 1.6rem;
+    padding: .6rem 3.1rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
 h2[data-1] {
     color: var(--secondary-color);
     font-family: var(--secondary-font);
@@ -153,6 +181,12 @@ p[data-3] {
 p[data-4] {
     display: flex;
     flex-flow: column nowrap;
+}
+
+p[data-5] {
+    font-size: 1.325rem;
+    font-weight: 600;
+    margin: .4rem 0 .6rem 0;
 }
 
 
@@ -683,6 +717,7 @@ ul[data-4] {
      font-family: var(--primary-font);
      font-size: 1.4rem;
      margin: 0;
+     text-transform: uppercase;
  }
 
  .links-list {
