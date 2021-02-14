@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
-  <%- include('../partials/head') %>
+<%- include('../partials/head') %>
+
 <body class="body_details">
-  <%- include('../partials/header') %> 
-    <main data-2>
-      <section data-1>
-        <h2 hidden>Detalle de Producto</h2>
-        <article>
-          <img src="<%= product.image %>" alt="<%= product.name %>" data-1>
-          <p><%= product.category %></p>
-          <h3 data-1><%= product.name %></h3>
-          <p data-5><%= product.price %></p>
-          <button data-5>Agregar al Carrito</button>
-        </article>
-      </section>
-    </main>
-    <%- include('../partials/footer') %>
-    <script src="/js/descripcion.js"></script>
+  <%- include('../partials/header') %>
+  <main data-2>
+    <section class="product-info" data-1>
+      <h2 hidden>Detalle de Producto</h2>
+      <article>
+        <img class="product-image" src="<%= product.image %>" alt="<%= product.name %>" data-1>
+        <div class="product-description">
+        <p data-6><%= product.category %></p>
+        <h3 data-1><%= product.name %></h3>
+        <p data-5>$<%= product.price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") %></p>
+        <button data-5>Agregar al Carrito</button>
+      </div>
+      </article>
+    </section>
+  </main>
+  <%- include('../partials/footer') %>
+  <script src="/js/descripcion.js"></script>
 </body>
+
 </html>
