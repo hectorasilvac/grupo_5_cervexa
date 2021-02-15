@@ -7,14 +7,21 @@
   <main data-2>
     <section class="product-info" data-1>
       <h2 hidden>Detalle de Producto</h2>
-      <article>
+      <article class="product-content">
         <img class="product-image" src="<%= product.image %>" alt="<%= product.name %>" data-1>
         <div class="product-description">
-        <p data-6><%= product.category %></p>
-        <h3 data-1><%= product.name %></h3>
-        <p data-5>$<%= product.price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") %></p>
-        <button data-5>Agregar al Carrito</button>
-      </div>
+          <p data-6><%= product.category %></p>
+          <h3 data-1><%= product.name %></h3>
+          <p data-5>$<%= product.price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") %></p>
+          <form data-1>
+            <div class="product-quantity">
+              <button>-</button>
+              <input type="number" value="1">
+              <button>+</button>
+            </div>
+            <button data-5>Agregar al Carrito</button>
+          </form>
+        </div>
       </article>
     </section>
   </main>
