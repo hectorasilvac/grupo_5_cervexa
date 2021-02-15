@@ -28,7 +28,23 @@ Desde el inicio del proyecto, establecimos como se iba a trabajar durante el pri
 
 ## Plan de accion de mejora
  - Teniendo en cuenta la única problemática de peso encontrada dentro de nuestro primer sprint, se decide dentro del equipo informar al Scrum Master (docentes encargados de nuestro proyecto integrador) con el fin de poner en evidencia la situación presentada, para que así nos presten algún tipo de ayuda o asesoramiento con la intención de darle solución al mismo.
- 
-    
+
+
+# Retrsopectiva Segundo Sprint
+
+## Metodologia de trabajo Sprint 2
+Continuamos con la metodología establecida en el primer sprint, ya que esta ah mostrado eficiencia a la hora de la realización de las tareas individuales, ya que estas son escogidas de manera voluntaria por los integrantes del equipo de trabajo, por lo tanto seguiremos apegandonos a este proceso.
+
+## Qué cosas han funcionado bien
+   - Continuamos dando cumplimiento a todas las solicitudes establecidas para el sprint 2, igualmente con los tiempos de entrega por lo tanto esto demuestra que nuestra metodología funciona de manera adecuada.
+   
+## Cuales hay que mejorar
+ - Por el momento no se debe mejorar nada dentro nuestros procesos.
+
+## Cuales son los problemas que podrían impedirle progresar adecuadamente
+ - Sin novedad dentro de este sprint.  
+
+## Plan de accion de mejora
+ - Se tendrá en cuenta cualquier novedad o anomalía dentro de las funciones de cada integrante, esto con el fin de realizar las mejoras o modificaciones pertinentes para evitar demoras o incumplimientos dentro de cada sprint. 
  
 
