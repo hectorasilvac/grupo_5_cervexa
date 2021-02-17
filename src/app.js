@@ -21,7 +21,7 @@ app.listen(process.env.PORT || 3000, () => {
     console.log('Servidor exitosamente inciado en el pruerto 3000.');
 });
 
-app.use(mainRouter);
+app.use('/', mainRouter);
 app.use('/cart', cartRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);

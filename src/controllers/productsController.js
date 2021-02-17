@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { send, title } = require('process');
+const { send, title, nextTick } = require('process');
 
 const productsController = {
     details: (req, res) => {
@@ -42,12 +42,19 @@ const productsController = {
             res.send('Error');
         }
     },
-    addRegister: (req, res) => {
+    addRegister: (req, res, next) => {
+        const file = req.file;
+        if( !file ) {
+            const error = new Error('Por favor seleccione un archivo.');
+            error.httpStatusCode = 400;
+            return next(error);
+        }
+
         let product = {
             id: null,
             name: req.body.name,
             description: req.body.description,
-            image: req.body.image,
+            image: file.filename,
             category: req.body.category,
             price: req.body.price
         };
@@ -77,7 +84,7 @@ const productsController = {
         product.id = id;
         product.name = req.body.name;
         product.description = req.body.description;
-        product.image = req.body.image;
+        product.image = req.file.filename;
         product.category = req.body.category;
         product.price = req.body.price;
 

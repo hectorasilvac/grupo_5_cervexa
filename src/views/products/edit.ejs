@@ -7,10 +7,10 @@
         <section class="edit-product" data-1>
             <% if (product === null) { %>
             <h2 data-1>Agregar un producto</h2>
-            <form action="/products/create" method="POST">
+            <form action="/products/create" method="POST" enctype="multipart/form-data">
             <% } else { %>
             <h2 data-1>Editar un producto</h2>
-            <form action="/products/edit/<%= product?.id %>/save?_method=PUT" method="POST">
+            <form action="/products/edit/<%= product?.id %>/save?_method=PUT" method="POST" enctype="multipart/form-data">
             <% } %>
                 <p data-4>
                     <label for="name">Nombre del producto:</label>
@@ -22,7 +22,7 @@
                 </p>
                 <p data-4>
                     <label for="image">Imagen:</label>
-                    <input id="image" name="image" type="text" value="<%= product?.image %>" data-4>
+                    <input id="image" name="image" type="file" value="<%= product?.image %>" data-4>
                 </p>
                 <p data-4>
                     <label for="category">Categoría:</label>
