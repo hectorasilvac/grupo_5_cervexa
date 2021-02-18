@@ -1,5 +1,18 @@
 const path = require('path');
+
 const usersController = {
+    addRegister: (req, res) => {
+        let user = {
+            id: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            image: '',
+        };
+        
+        console.log(req.body);
+    },
     login: (req, res) => {
         let title = 'Ingresa a tu cuenta';
         res.render('users/login',{

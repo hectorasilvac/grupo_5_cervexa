@@ -1,12 +1,12 @@
 const fs = require('fs');
 const path = require('path');
-const { send, title, nextTick } = require('process');
+// const { send, title, nextTick } = require('process');
 
 const productsController = {
     details: (req, res) => {
         let id = parseInt(req.params.id);
 
-        let products = fs.readFileSync(path.resolve(__dirname, '../products.json'), 'utf-8');
+        let products = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
         products = JSON.parse(products);
 
         let product = products.find( product => product.id === id);
@@ -28,7 +28,7 @@ const productsController = {
         let title = 'Editar Producto';
         let id = parseInt(req.params.id);
 
-        let products = fs.readFileSync(path.resolve(__dirname, '../products.json'), 'utf-8');
+        let products = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
         products = JSON.parse(products);
 
         let product = products.find( product => product.id === id);
@@ -59,7 +59,7 @@ const productsController = {
             price: req.body.price
         };
 
-        let productsFile = fs.readFileSync(path.resolve(__dirname, '../products.json'), 'utf-8');
+        let productsFile = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
         let products;
 
         if (productsFile === "") {
@@ -71,13 +71,13 @@ const productsController = {
         product.id = products.length;
         products.push(product);
         productsJSON = JSON.stringify(products);
-        fs.writeFileSync(path.resolve(__dirname, '../products.json'), productsJSON);
+        fs.writeFileSync(path.resolve(__dirname, '../data/products.json'), productsJSON);
 
         res.redirect('/');
     },
     save: (req, res) => {
         let id = parseInt(req.params.id);
-        let productsFile = fs.readFileSync(path.resolve(__dirname, '../products.json'), 'utf-8');
+        let productsFile = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
         let products = JSON.parse(productsFile);
 
         let product = products.find( product => product.id === id );
@@ -91,7 +91,7 @@ const productsController = {
         let filteredProducts = products.filter( product => product.id !== id );
         filteredProducts.push(product);
         let totalProducts = JSON.stringify(filteredProducts);
-        fs.writeFileSync(path.resolve(__dirname, '../products.json'), totalProducts);
+        fs.writeFileSync(path.resolve(__dirname, '../data/products.json'), totalProducts);
 
         res.redirect('/');
     }
