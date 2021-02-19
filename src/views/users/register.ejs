@@ -81,6 +81,26 @@
                 <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">El formulario se envio exitosamente</p>
             </div>
         </form>
+        <h2>Formulario de Prueba</h2>
+        <form action="/users/create" method="POST" enctype="multipart/form-data">
+            <p>
+                <label for="firstName">Nombre:</label>
+                <input id="firstName" type="text" name="firstName">
+            </p>
+            <p>
+                <label for="lastName">Apellido:</label>
+                <input id="lastName" type="text" name="lastName">
+            </p>
+            <p>
+                <label for="password">Contraseña:</label>
+                <input id="password" type="text" name="password">
+            </p>
+            <p>
+                <label for="image">Imagen de Perfil:</label>
+                <input id="image" type="file" name="image">
+            </p>
+            <button type="submit">Crear</button>
+        </form>
     </main>
     <%- include('../partials/footer') %>
     <script src="/js/formulario.js"></script>

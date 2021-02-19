@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-// const { send, title, nextTick } = require('process');
 
 const productsController = {
     details: (req, res) => {
