@@ -2,11 +2,11 @@ const fs = require('fs');
 const path = require('path');
 
 const productsPath = path.resolve(__dirname, '../data/products.json');
-let products = fs.readFileSync(productsPath, 'utf-8');
 
 const productsController = {
     delete: (req, res) => {
         let id = parseInt(req.params.id);
+        let products = fs.readFileSync(productsPath, 'utf-8');
         products = JSON.parse(products);
 
         const index = products.map( product => product.id ).indexOf(id);
@@ -23,6 +23,7 @@ const productsController = {
     details: (req, res) => {
         let id = parseInt(req.params.id);
 
+        let products = fs.readFileSync(productsPath, 'utf-8');
         products = JSON.parse(products);
 
         let product = products.find( product => product.id === id);
@@ -33,7 +34,7 @@ const productsController = {
             product: product
         });
     },
-    edit: (req, res) => {
+    create: (req, res) => {
         let title = 'Creación de Producto';
         res.render('products/edit', {
             title: title,
@@ -44,6 +45,7 @@ const productsController = {
         let title = 'Editar Producto';
         let id = parseInt(req.params.id);
 
+        let products = fs.readFileSync(productsPath, 'utf-8');
         products = JSON.parse(products);
 
         let product = products.find( product => product.id === id);
@@ -83,7 +85,7 @@ const productsController = {
             products = JSON.parse(productsFile);
         }
 
-        product.id = products.length;
+        product.id = products.length + 1;
         products.push(product);
         productsJSON = JSON.stringify(products);
         fs.writeFileSync(productsPath, productsJSON);
@@ -111,6 +113,7 @@ const productsController = {
         res.redirect('/');
     },
     showAll:(req,res) => {
+        let products = fs.readFileSync(productsPath, 'utf-8');
         products = JSON.parse(products);
         
         let title = 'Listado de Productos | Merkar';
