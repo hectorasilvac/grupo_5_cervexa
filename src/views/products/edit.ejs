@@ -7,11 +7,13 @@
         <section class="edit-product" data-1>
             <% if (product === null) { %>
             <h2 data-1>Agregar un producto</h2>
-            <form action="/products/create" method="POST" enctype="multipart/form-data">
+            <form action="/products/" method="POST" enctype="multipart/form-data">
             <% } else { %>
             <h2 data-1>Editar un producto</h2>
-            <form action="/products/edit/<%= product?.id %>/save?_method=PUT" method="POST" enctype="multipart/form-data">
-            <% } %>
+            <form id="deleteItem" action="/products/<%= product.id %>?_method=DELETE" method="POST"></form>
+            <form action="/products/<%= product?.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+            
+                <% } %>
                 <p data-4>
                     <label for="name">Nombre del producto:</label>
                     <input id="name" name="name" type="text" value="<%= product?.name %>" data-4>
@@ -34,6 +36,9 @@
                 </p>
                 <button type="reset" data-4>Limpiar</button>
                 <button type="submit" data-4>Guardar</button>
+                <% if(product !== null) { %>
+                        <button type="submit" form="deleteItem" data-4>Eliminar</button>
+                <% } %>
             </form>
         </section>
     </main>

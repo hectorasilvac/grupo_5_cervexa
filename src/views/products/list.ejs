@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <section class="all-products" data-1>
+            <h2 hidden>Todos los productos</h2>
+            <% products.forEach( product => { %>
+                <article class="product-details">
+                  <a href="/products/info/<%= product.id %>" data-1>
+                  <div class="item-image-container">
+                    <img class="item-image" src="/images/products/<%= product.image %>" alt="Imagen de Producto" />
+                  </div>
+                  <p data-1><%= product.category %></p>
+                  <h3 class="item-title"><%= product.name %></h3>
+                  <p class="item-number">$<%= product.price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")  %></p>
+                </a>
+                  <button class="btn-primary mt-1">COMPRAR</button>
+                </article>
+                <% }); %>
+        </section>
+    </main>
+    
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

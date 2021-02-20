@@ -1,25 +1,28 @@
 const fs = require('fs');
 const path = require('path');
 
-const productsController = {
-    allProducts:(req,res) => {
-        let id = parseInt(req.params.id);
+const productsPath = path.resolve(__dirname, '../data/products.json');
+let products = fs.readFileSync(productsPath, 'utf-8');
 
-        let products = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
+const productsController = {
+    delete: (req, res) => {
+        let id = parseInt(req.params.id);
         products = JSON.parse(products);
 
-        let product = products.find( product => product.id === id);
-        
-        let title = 'Productos registrados';
-        res.render('products/allProducts', {
-            title: title,
-            products: products
-        })
+        const index = products.map( product => product.id ).indexOf(id);
+
+        if ( index > -1 ) {
+            products.splice(index, 1);
+        }
+
+        let productsJSON = JSON.stringify(products);
+        fs.writeFileSync(productsPath, productsJSON);
+
+        res.redirect('/');
     },
     details: (req, res) => {
         let id = parseInt(req.params.id);
 
-        let products = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
         products = JSON.parse(products);
 
         let product = products.find( product => product.id === id);
@@ -41,7 +44,6 @@ const productsController = {
         let title = 'Editar Producto';
         let id = parseInt(req.params.id);
 
-        let products = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
         products = JSON.parse(products);
 
         let product = products.find( product => product.id === id);
@@ -72,7 +74,7 @@ const productsController = {
             price: req.body.price
         };
 
-        let productsFile = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
+        let productsFile = fs.readFileSync(productsPath, 'utf-8');
         let products;
 
         if (productsFile === "") {
@@ -84,13 +86,13 @@ const productsController = {
         product.id = products.length;
         products.push(product);
         productsJSON = JSON.stringify(products);
-        fs.writeFileSync(path.resolve(__dirname, '../data/products.json'), productsJSON);
+        fs.writeFileSync(productsPath, productsJSON);
 
         res.redirect('/');
     },
     save: (req, res) => {
         let id = parseInt(req.params.id);
-        let productsFile = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
+        let productsFile = fs.readFileSync(productsPath, 'utf-8');
         let products = JSON.parse(productsFile);
 
         let product = products.find( product => product.id === id );
@@ -104,9 +106,18 @@ const productsController = {
         let filteredProducts = products.filter( product => product.id !== id );
         filteredProducts.push(product);
         let totalProducts = JSON.stringify(filteredProducts);
-        fs.writeFileSync(path.resolve(__dirname, '../data/products.json'), totalProducts);
+        fs.writeFileSync(productsPath, totalProducts);
 
         res.redirect('/');
+    },
+    showAll:(req,res) => {
+        products = JSON.parse(products);
+        
+        let title = 'Listado de Productos | Merkar';
+        res.render('products/list', {
+            title: title,
+            products: products
+        });
     }
 };
 

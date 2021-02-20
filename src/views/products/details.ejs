@@ -12,6 +12,7 @@
         <div class="product-description">
           <p data-6><%= product.category %></p>
           <h3 data-1><%= product.name %></h3>
+          <p><%= product.description %></p>
           <p data-5>$<%= product.price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") %></p>
           <form data-1>
             <div class="product-quantity">

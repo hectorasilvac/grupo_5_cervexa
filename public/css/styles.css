@@ -230,18 +230,17 @@ ul[data-4] {
     padding: 0;
 }
 
-
-
-
-/* section {
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: 1.6rem;
-} */
-
 /************************************/
 /********** Custom Classes **********/
 /************************************/
+
+.all-products {
+    background: var(--tertiary-color);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
 
 .banner-content .image {
     background-image: url('/images/Marquee-Desktop-ValentineGG_2530x1400.webp');
