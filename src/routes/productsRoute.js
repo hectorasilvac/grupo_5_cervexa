@@ -23,4 +23,6 @@ router.put('/edit/:id/save', upload.single('image'), productsController.save);
 router.post('/create', upload.single('image'), productsController.addRegister);
 router.get('/info/:id', productsController.details);
 
+router.get('/allProducts', productsController.allProducts);
+
 module.exports = router;

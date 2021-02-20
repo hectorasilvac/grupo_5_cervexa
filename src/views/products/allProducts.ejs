@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <% products.forEach(element => { %>
+        <main>        
+            <h2><%= element.name  %> </h2>
+            <div>
+                <img src="/images/products/<%=element.image  %> " alt="">
+            </div>
+            <div>
+                <h2>$<%=element.price  %> </h2>
+            </div>
+        </main>
+    <% }) %>
+    
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

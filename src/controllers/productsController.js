@@ -2,6 +2,20 @@ const fs = require('fs');
 const path = require('path');
 
 const productsController = {
+    allProducts:(req,res) => {
+        let id = parseInt(req.params.id);
+
+        let products = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
+        products = JSON.parse(products);
+
+        let product = products.find( product => product.id === id);
+        
+        let title = 'Productos registrados';
+        res.render('products/allProducts', {
+            title: title,
+            products: products
+        })
+    },
     details: (req, res) => {
         let id = parseInt(req.params.id);
 

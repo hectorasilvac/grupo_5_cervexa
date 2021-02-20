@@ -3,16 +3,21 @@ const path = require('path');
 
 const usersController = {
     addRegister: (req, res) => {
-        let usersFilePath =  path.resolve(__dirname, '../data/users.json');
 
-        let {id, firstName, lastName, password, image } = req.body;
+        if(req.file){
+            let usersFilePath =  path.resolve(__dirname, '../data/users.json');
+
+        let {id, nombre, apellidos, password, terminos, correo } = req.body;
+        let image = req.file.filename;
 
         let user = {
             id: null,
-            firstName,
-            lastName,
+            nombre,
+            apellidos,
             password,
-            image
+            terminos,
+            image, 
+            correo
         };
 
         let usersFile = fs.readFileSync(usersFilePath, 'utf-8');
@@ -30,6 +35,13 @@ const usersController = {
         fs.writeFileSync(usersFilePath, usersJSON);
 
         res.redirect('/');
+        }else{
+            let title = 'Registro de usuarios';
+        res.render('users/register',{
+            'title': title
+        });
+        }
+        
     },
     login: (req, res) => {
         let title = 'Ingresa a tu cuenta';

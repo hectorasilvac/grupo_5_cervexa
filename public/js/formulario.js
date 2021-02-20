@@ -86,7 +86,7 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) =>{
-    e.preventDefault()
+    // e.preventDefault()
 
     const terminos = document.getElementById('terminos')
     if(campos.apellidos && campos.nombre && campos.password &&campos.correo && campos.identificacion && terminos.checked){
