@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { validationResult } = require('express-validator');
 
 const productsPath = path.resolve(__dirname, '../data/products.json');
 
@@ -60,11 +61,15 @@ const productsController = {
         }
     },
     addRegister: (req, res, next) => {
+        const validations = validationResult(req);
         const file = req.file;
-        if( !file ) {
-            const error = new Error('Por favor seleccione un archivo.');
-            error.httpStatusCode = 400;
-            return next(error);
+
+        if( validations.errors.length > 0 ) {
+            res.render('products/edit', {
+                errors: validations.mapped(),
+                oldData: req.body,
+                title: 'Editar Producto | Cervexa'
+            });
         }
 
         let product = {
@@ -90,7 +95,7 @@ const productsController = {
         productsJSON = JSON.stringify(products);
         fs.writeFileSync(productsPath, productsJSON);
 
-        res.redirect('/');
+        // res.redirect('/');
     },
     save: (req, res) => {
         let id = parseInt(req.params.id);

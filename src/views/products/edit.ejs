@@ -5,12 +5,12 @@
     <%- include('../partials/header') %>
     <main data-2>
         <section class="edit-product" data-1>
-            <% if (product === null) { %>
+            <% if ( product === null ) { %>
             <h2 data-1>Agregar un producto</h2>
             <form action="/products/" method="POST" enctype="multipart/form-data">
             <% } else { %>
             <h2 data-1>Editar un producto</h2>
-            <form id="deleteItem" action="/products/<%= product.id %>?_method=DELETE" method="POST"></form>
+            <form id="deleteItem" action="/products/<%= product?.id %>?_method=DELETE" method="POST"></form>
             <form action="/products/<%= product?.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
             
                 <% } %>
