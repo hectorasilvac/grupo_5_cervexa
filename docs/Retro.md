@@ -48,3 +48,21 @@ Continuamos con la metodología establecida en el primer sprint, ya qu
  - Se tendrá en cuenta cualquier novedad o anomalía dentro de las funciones de cada integrante, esto con el fin de realizar las mejoras o modificaciones pertinentes para evitar demoras o incumplimientos dentro de cada sprint. 
  
 
+# Retrsopectiva Tercer Sprint
+
+## Metodologia de trabajo Sprint 3
+Para este sprint cambio un poco el como estábamos trabajando y como nos asignábamos las actividades a realizar, ya que la comunicación dentro del equipo estuvo mas dispersa, cosa, que hay que mejorar para el siguiente sprint.
+
+## Qué cosas han funcionado bien
+ - Continuamos dando cumplimiento a todas las solicitudes establecidas para el sprint 3, igualmente con los tiempos de entrega pero en este sprint se sintio que la metodologia que normalmente se estaba trabajando no funciono en su totalidad.
+   
+## Cuales hay que mejorar
+ - Debemos concentrarnos en realizar unicamente lo solicitado dentro de cada sprint.
+ - Mejorar la comunicación en cuanto a las mejoras y modificaciones dentro del proyecto.
+
+## Cuales son los problemas que podrían impedirle progresar adecuadamente
+ - Mas que verlo como un problema, es simplemente centrarnos en los requerimientos solicitados, ya que dentro de este sprint se realizaron actividades dentro del proyecto las cuales no estaban requeridas, por lo tanto de parte del compañero Andrés Roa, no se vio el mismo apoyo dentro de las actividades realizadas, ya que el tema  ejecutado no estaba dentro de su alcance, y de esta manera se vio mas la labor del segundo integrante del equipo Héctor Silva.  
+
+## Plan de accion de mejora
+ - Recalcar que el progreso sea acorde a los requerimientos de cada sprint.
+ - Mejorar la comunicación en cuanto a las actividades, mejoras de código o modificaciones realizadas.

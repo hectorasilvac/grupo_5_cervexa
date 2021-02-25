@@ -27,4 +27,5 @@ app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 app.use((req, res, next) => {
     res.status(404).send('No se ha encontrado la página requerida.');
+    next();
 });
