@@ -1,3 +1,5 @@
+<% product = typeof product === 'undefined' ? null : product %>
+<% oldData = typeof oldData === 'undefined' ? null : oldData %>
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head') %>
@@ -16,23 +18,38 @@
                 <% } %>
                 <p data-4>
                     <label for="name">Nombre del producto:</label>
-                    <input id="name" name="name" type="text" value="<%= product?.name %>" data-4>
+                    <input id="name" name="name" type="text" value="<%= oldData?.name || product?.name %>" data-4>
+                    <% if (locals?.errors?.name ) { %>
+                        <span><%= errors?.name?.msg %></span>
+                    <% } %>
                 </p>
                 <p data-4>
                     <label for="description">Descripción:</label>
-                    <input id="description" name="description" type="text" value="<%= product?.description %>" data-4>
+                    <input id="description" name="description" type="text" value="<%= oldData?.description || product?.description %>" data-4>
+                    <% if (locals?.errors?.description ) { %>
+                        <span><%= errors?.description?.msg %></span>
+                    <% } %>
                 </p>
                 <p data-4>
                     <label for="image">Imagen:</label>
                     <input id="image" name="image" type="file" value="<%= product?.image %>" data-4>
+                    <% if (locals?.errors?.image ) { %>
+                        <span><%= errors?.image?.msg %></span>
+                    <% } %>
                 </p>
                 <p data-4>
                     <label for="category">Categoría:</label>
-                    <input id="category" name="category" type="text" value="<%= product?.category %>" data-4>
+                    <input id="category" name="category" type="text" value="<%= oldData?.category || product?.category %>" data-4>
+                    <% if (locals?.errors?.category ) { %>
+                        <span><%= errors?.category?.msg %></span>
+                    <% } %>
                 </p>
                 <p data-4>
                     <label for="price">Precio:</label>
-                    <input id="price" name="price" type="number" value="<%= product?.price %>" data-4>
+                    <input id="price" name="price" type="number" value="<%=  oldData?.price || product?.price %>" data-4>
+                    <% if (locals?.errors?.price ) { %>
+                        <span><%= errors?.price?.msg %></span>
+                    <% } %>
                 </p>
                 <button type="reset" data-4>Limpiar</button>
                 <button type="submit" data-4>Guardar</button>

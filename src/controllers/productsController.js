@@ -38,8 +38,7 @@ const productsController = {
     create: (req, res) => {
         let title = 'Creación de Producto';
         res.render('products/edit', {
-            title: title,
-            product: null
+            title: title
         });
     },
     editById: (req, res) => {
@@ -68,7 +67,7 @@ const productsController = {
             res.render('products/edit', {
                 errors: validations.mapped(),
                 oldData: req.body,
-                title: 'Editar Producto | Cervexa'
+                title: 'Editar Producto | Cervexa',
             });
         }
 
@@ -95,7 +94,7 @@ const productsController = {
         productsJSON = JSON.stringify(products);
         fs.writeFileSync(productsPath, productsJSON);
 
-        // res.redirect('/');
+        res.redirect('/');
     },
     save: (req, res) => {
         let id = parseInt(req.params.id);
