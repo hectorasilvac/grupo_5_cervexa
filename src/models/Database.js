@@ -57,7 +57,6 @@ class Database {
         return true;
     }
 
-
 }
 
 module.exports = Database;
