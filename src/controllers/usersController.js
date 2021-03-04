@@ -15,6 +15,8 @@ const usersController = {
             oldData: req.body
         });
 
+        console.log('Prueba');
+
         // if (req.file) {
         //     let usersFilePath = path.resolve(__dirname, '../data/users.json');
 
