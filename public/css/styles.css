@@ -11,6 +11,7 @@
     --primary-color: #444444;
     --secondary-color: #b59049;
     --tertiary-color: #ffffff;
+    --quaternary-color: #cb3837;
     /* Font Variables */
     --primary-font: 'Work Sans', sans-serif;
     --secondary-font: 'Unna', serif;
@@ -156,7 +157,6 @@ input[data-4] {
     padding: .8rem;
 }
 
-
 main[data-1] {
     background-color: #e7e2d9;
 }
@@ -207,6 +207,19 @@ p[data-6] {
     text-transform: uppercase;
 }
 
+section > header {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+}
+
+section > header > h2 {
+    color: var(--secondary-color);
+    font-family: var(--secondary-font);
+    font-size: 2.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
 
 section[data-1] {
     max-width: 120rem;
@@ -240,6 +253,15 @@ ul[data-4] {
     flex-flow: row wrap;
     justify-content: space-around;
     margin-top: 1rem;
+}
+
+.b1 {
+    background-color: var(--secondary-color);
+    border: .1rem solid var(--secondary-color);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
 }
 
 .banner-content .image {
@@ -463,9 +485,57 @@ ul[data-4] {
     text-align: center;
 }
 
+.form-entry {
+    display: flex;
+    flex-flow: column;
+}
+
+.form-entry > input {
+    background-color: #f6f5f3;
+    border: .1rem solid var(--secondary-color);
+    padding: 1.5rem;
+}
+
+.form-entry > label {
+    display: none;
+}
+
+.form-entry > span {
+    color: var(--quaternary-color);
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+.form-entry.p1 {
+    flex-flow: row wrap;
+}
+
+.form-entry.p1 > label {
+    margin-left:  .5rem;
+}
+
+.form-entry.p1 > span {
+    width: 100%;
+}
+
+.is-invalid {
+    border: .1rem solid var(--quaternary-color) !important;
+}
+
+.l1 {
+    display: block !important;
+}
+
 .main-banner {
     background-color: #1a060d;
     width: 100%;
+}
+
+.m1 {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .main-banner > .banner-content {
@@ -528,6 +598,17 @@ ul[data-4] {
 
 .option-menu a > span {
     margin-top: 1rem;
+}
+
+.s1 {
+    max-width: 72rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.5rem;
+    width: fill-available;
+    width: -moz-available;
+    width: -webkit-fill-available;
 }
 
 .shopping-cart {

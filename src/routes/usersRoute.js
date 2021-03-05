@@ -22,6 +22,6 @@ let upload = multer({ storage });
 router.get('/login', usersController.login);
 router.get('/login', usersController.processLogin);
 router.get('/register', usersController.register);
-router.post('/create', upload.single('profileImage'), registerValidations, usersController.addRegister);
+router.post('/create', upload.single('profileImage'), registerValidations, usersController.processRegister);
 
 module.exports = router;

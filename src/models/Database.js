@@ -1,9 +1,10 @@
 const fs = require('fs');
+const path = require('path');
 
 class Database {
     constructor(dbName) {
         this.dbName = dbName;
-        this.fileName = `./database/${this.dbName}.json`;
+        this.fileName = path.resolve(__dirname, `../database/${this.dbName}.json`);
     }
 
     getData() {
@@ -21,7 +22,7 @@ class Database {
     }
 
     findAll() {
-        return this.getData;
+        return this.getData();
     }
 
     findByPk(id) {
@@ -32,7 +33,7 @@ class Database {
 
     findByField(field, value) {
         const allData = this.findAll();
-        const dataFound = allData.find(data => data[field] === value);
+        const dataFound = allData?.find(data => data[field] === value);
         return dataFound;
     }
 
