@@ -39,11 +39,13 @@ const usersController = {
             profileImage: req.file.filename
         };
         
+        delete userToCreate.acceptedTerms;
         const userCreated = User.create(userToCreate);
+
         return res.redirect('/users/login');
     },
     login: (req, res) => {
-        let title = 'Ingresa a tu cuenta';
+        const title = 'Cuenta';
         res.render('users/login', {
             'title': title
         })
