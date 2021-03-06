@@ -21,6 +21,7 @@ let upload = multer({ storage });
 
 router.get('/login', usersController.login);
 router.get('/register', usersController.register);
+router.get('/', usersController.allUsers);
 
 
 router.post('/create', upload.single('image'), usersController.addRegister);

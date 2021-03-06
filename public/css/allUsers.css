@@ -1,0 +1,65 @@
+.main-allUsers {
+	display: flex;
+	width: 90%;
+	margin: auto;
+	display: flex;
+	border: blueviolet solid;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding-bottom: 25px;
+}
+.article-allUsers {
+	display: flex;
+	width: 48%;
+	height: 100px;
+	border: solid #b59049;
+	border-radius: 15px;
+	margin: auto;
+	margin-top: 25px;
+}
+.article-data {
+	display: flex;
+}
+.image-data {
+	display: flex;
+	width: 200px;
+}
+.image-data img {
+	display: flex;
+	width: 100%;
+	border-radius: 0 15px 15px 0;
+	border: solid #b59049;
+}
+.nav-allUsers {
+	width: 100%;
+	display: flex;
+}
+.ul-allUsers {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+}
+
+.ul-allUsers li {
+	list-style: none;
+}
+
+.editar-allUsers {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.boton {
+	padding: 6px;
+	border-radius: 5px;
+	background-color: #b59049;
+	color: white;
+	width: 100%;
+}
+.section-id {
+	display: flex;
+	align-items: center;
+	background: #b59049;
+	color: white;
+	border-radius: 10px 0 0 10px;
+}

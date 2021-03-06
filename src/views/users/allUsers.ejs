@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../partials/head') %>
+	<body>
+		<%- include('../partials/header') %>
+		<main class="main-allUsers">
+			<% for( let i = 0; i < user.length; i++ ) { %>
+			<article class="article-allUsers">
+				<article class="article-data">
+                    <section class="section-id">
+                        <h1><%=user[i].id%> </h1>
+                    </section>
+					<section class="image-data">
+						<img src="../images/users/<%=user[i].image%>" alt="" />
+					</section>
+					<nav class="nav-allUsers">
+						<ul class="ul-allUsers">
+							<li>Nombre:<%=user[i].nombre %></li>
+							<li>Apellidos: <%=user[i].apellidos %></li>
+							<li>Email: <%=user[i].correo %></li>
+							<li>Terminos: <%=user[i].terminos %></li>
+						</ul>
+					</nav>
+				</article>
+				<section class="editar-allUsers">
+					<form action="">
+                        <input class="boton" type="submit" value="Editar">
+                    </form>
+                    <form action="">
+                        <input class="boton" type="submit" value="Eliminar">
+                    </form>
+				</section>				
+			</article>
+			<% } %>
+		</main>
+	</body>
+	<%- include('../partials/footer') %>
+</html>
