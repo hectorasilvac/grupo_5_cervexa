@@ -247,6 +247,12 @@ ul[data-4] {
 /********** Custom Classes **********/
 /************************************/
 
+.a1 {
+    color: var(--secondary-color);
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
 .all-products {
     background: var(--tertiary-color);
     display: flex;
@@ -256,12 +262,16 @@ ul[data-4] {
 }
 
 .b1 {
+    display: block;
     background-color: var(--secondary-color);
     border: .1rem solid var(--secondary-color);
     color: white;
     font-size: 1.5rem;
     font-weight: 500;
     padding: 1rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
 }
 
 .banner-content .image {
@@ -481,6 +491,36 @@ ul[data-4] {
     text-transform: uppercase;
 }
 
+.d1 > header {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+}
+
+.d1 > header > h3 {
+    color: #b1b1b1;
+    font-family: var(--primary-font);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.d1 > header > hr {
+    background-color: #cccaca;
+    border: none;
+    height: .11rem;
+    width: 100%;
+}
+
+.d1 > header > p {
+    color: #909090;
+    font-family: var(--primary-font);
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 2rem;
+    text-align: justify;
+}
+
 .edit-product > h2 {
     text-align: center;
 }
@@ -504,18 +544,6 @@ ul[data-4] {
     color: var(--quaternary-color);
     margin-bottom: .5rem;
     margin-top: .5rem;
-}
-
-.form-entry.p1 {
-    flex-flow: row wrap;
-}
-
-.form-entry.p1 > label {
-    margin-left:  .5rem;
-}
-
-.form-entry.p1 > span {
-    width: 100%;
 }
 
 .is-invalid {
@@ -598,6 +626,24 @@ ul[data-4] {
 
 .option-menu a > span {
     margin-top: 1rem;
+}
+
+.p1 {
+    flex-flow: row wrap;
+}
+
+.p1 > label {
+    margin-left:  .5rem;
+}
+
+.p1 > span {
+    width: 100%;
+}
+
+.p2 {
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .s1 {

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+  <%- include('../partials/header') %>
+  <main class="m1">
+      Hola <%= user.lastName %>
+      <% console.log(user) %>
+      <img src="/images/users/<%= user.profileImage %>"/>
+  </main>
+  <%- include('../partials/footer') %>
+</body>
+
+</html>
