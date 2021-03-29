@@ -31,6 +31,26 @@
                     <% } %>
                 </p>
                 <p data-4>
+                    <label for="content">Contenido:</label>
+                    <input id="content" name="content" type="number" value="<%= oldData?.content || product?.content %>" data-4>
+                    <% if (locals?.errors?.content ) { %>
+                        <span><%= errors?.content?.msg %></span>
+                    <% } %>
+                </p>
+                <p data-4>
+                    <label for="measure">Medida:</label>
+                    <!-- <input id="measure" name="measure" type="number" value="<%= oldData?.measure || product?.measure %>" data-4> -->
+
+                    <select name="measure" id="measure">
+                        <% measures.forEach( measure => {  %>
+                            <option value="<%= measure.id %>"><%= measure.name %></option>
+                        <% }); %>
+                    </select>
+                    <% if (locals?.errors?.measure ) { %>
+                        <span><%= errors?.measure?.msg %></span>
+                    <% } %>
+                </p>
+                <p data-4>
                     <label for="image">Imagen:</label>
                     <input id="image" name="image" type="file" value="<%= product?.image %>" data-4>
                     <% if (locals?.errors?.image ) { %>
@@ -39,16 +59,42 @@
                 </p>
                 <p data-4>
                     <label for="category">Categoría:</label>
-                    <input id="category" name="category" type="text" value="<%= oldData?.category || product?.category %>" data-4>
+                    <!-- <input id="category" name="category" type="text" value="<%= oldData?.category || product?.category %>" data-4> -->
+                    <select name="category" id="category">
+                        <% categories.forEach( category => {  %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                        <% }); %>
+                    </select>
                     <% if (locals?.errors?.category ) { %>
                         <span><%= errors?.category?.msg %></span>
                     <% } %>
                 </p>
                 <p data-4>
-                    <label for="price">Precio:</label>
-                    <input id="price" name="price" type="number" value="<%=  oldData?.price || product?.price %>" data-4>
-                    <% if (locals?.errors?.price ) { %>
-                        <span><%= errors?.price?.msg %></span>
+                    <label for="stock">Stock:</label>
+                    <input id="stock" name="stock" type="number" value="<%=  oldData?.stock || product?.stock %>" data-4>
+                    <% if (locals?.errors?.stock ) { %>
+                        <span><%= errors?.stock?.msg %></span>
+                    <% } %>
+                </p>
+                <p data-4>
+                    <label for="expirationDate">Fecha de Vencimiento:</label>
+                    <input id="expirationDate" name="expirationDate" type="date" value="<%=  oldData?.expirationDate || product?.expirationDate %>" data-4>
+                    <% if (locals?.errors?.expirationDate ) { %>
+                        <span><%= errors?.expirationDate?.msg %></span>
+                    <% } %>
+                </p>
+                <p data-4>
+                    <label for="purchasePrice">Precio de Compra:</label>
+                    <input id="purchasePrice" name="purchasePrice" type="number" value="<%=  oldData?.purchasePrice || product?.purchasePrice %>" data-4>
+                    <% if (locals?.errors?.purchasePrice ) { %>
+                        <span><%= errors?.purchasePrice?.msg %></span>
+                    <% } %>
+                </p>
+                <p data-4>
+                    <label for="salePrice">Precio de Venta:</label>
+                    <input id="salePrice" name="salePrice" type="number" value="<%=  oldData?.salePrice || product?.salePrice %>" data-4>
+                    <% if (locals?.errors?.salePrice ) { %>
+                        <span><%= errors?.salePrice?.msg %></span>
                     <% } %>
                 </p>
                 <button type="reset" data-4>Limpiar</button>

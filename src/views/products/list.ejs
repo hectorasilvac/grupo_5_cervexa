@@ -14,7 +14,7 @@
                   </div>
                   <p data-1><%= product.category %></p>
                   <h3 class="item-title"><%= product.name %></h3>
-                  <p class="item-number">$<%= product.price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")  %></p>
+                  <p class="item-number">$<%= product?.price?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")  %></p>
                 </a>
                   <button class="btn-primary mt-1">COMPRAR</button>
                 </article>

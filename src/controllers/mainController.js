@@ -1,18 +1,21 @@
 const path = require('path');
 const fs = require('fs');
+const db = require('../../database/models');
 
 const mainController = {
     home: (req, res) => {
-
-        let products = fs.readFileSync(path.resolve(__dirname, '../data/products.json'), 'utf-8');
-        products = JSON.parse(products);
-
-        let title = 'Licores a domicilios 24hs | Entrega en minutos';
-        res.render('home', {
-            title: title,
-            products: products
-        });
-    },
+        db.Product.findAll({
+                include: ['brand', 'images', 'inventory', 'measure']
+            })
+            .then(products => {
+                console.log(products);
+                const title = 'Listado de Productos | Merkar';
+                res.render('home', {
+                    title,
+                    products
+                });
+            });
+    }
 };
 
 module.exports = mainController;

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
+const db = require('../../database/models');
 
 const productsPath = path.resolve(__dirname, '../data/products.json');
 
@@ -24,22 +25,38 @@ const productsController = {
     details: (req, res) => {
         let id = parseInt(req.params.id);
 
+        if ( id !== undefined ) {
+
         let products = fs.readFileSync(productsPath, 'utf-8');
         products = JSON.parse(products);
 
         let product = products.find( product => product.id === id);
 
-        let title = product.name;
+        let title = product?.name;
         res.render('products/details', {
             title: title,
             product: product
         });
+
+    } else {
+            console.log('No existe la ID')
+        }
     },
-    create: (req, res) => {
-        let title = 'Creación de Producto';
-        res.render('products/edit', {
-            title: title
-        });
+    create: (req, res, next, variables = null) => {
+        const getCategories = db.Category.findAll();
+        const getMeasures = db.Measure.findAll();
+
+        Promise.all([getCategories, getMeasures])
+            .then( ([categories, measures]) => {
+                const title = 'Creación de Producto';
+
+                return res.render('products/edit', {
+                    title,
+                    categories,
+                    measures,
+                    ...variables
+                })
+            });
     },
     editById: (req, res) => {
         let title = 'Editar Producto';
@@ -61,40 +78,51 @@ const productsController = {
     },
     addRegister: (req, res, next) => {
         const validations = validationResult(req);
-        const file = req.file;
+        const { file } = req;
 
-        if( validations.errors.length > 0 ) {
-            res.render('products/edit', {
+        const formHasErrors = validations.errors.length > 0;
+        if(formHasErrors) {
+            return productsController.create(req, res, next, {
                 errors: validations.mapped(),
                 oldData: req.body,
-                title: 'Editar Producto | Cervexa',
             });
         }
 
-        let product = {
-            id: null,
+        const createImage = db.Image.create({
+            url: file.filename,
+            alt: 'Probando Imagen 13'
+        });
+
+        const createProduct = db.Product.create({
             name: req.body.name,
             description: req.body.description,
-            image: file.filename,
-            category: req.body.category,
-            price: req.body.price
-        };
+            content: req.body.content,
+            measure: req.body.measure,
+            category_id: req.body.category,
+            measure_id: req.body.measure,
+            inventory: {
+                expirationDate: req.body.expirationDate,
+                purchasePrice: req.body.purchasePrice,
+                salePrice: req.body.salePrice,
+                stock: req.body.stock
+            }
+        },
+        {
+            include: ['inventory']
+        });
 
-        let productsFile = fs.readFileSync(productsPath, 'utf-8');
-        let products;
+        Promise.all([createProduct, createImage])
+            .then(([product, image]) => {
+                db.Product.findByPk(product.id)
+                    .then(productFound => {
+                        productFound.setImages([image.id])
+                    });
+            })
+            .catch( error => {
+                console.log(error);
+            });
 
-        if (productsFile === "") {
-            products = [];
-        } else {
-            products = JSON.parse(productsFile);
-        }
-
-        product.id = products.length + 1;
-        products.push(product);
-        productsJSON = JSON.stringify(products);
-        fs.writeFileSync(productsPath, productsJSON);
-
-        res.redirect('/');
+        return res.redirect('/products/create');
     },
     save: (req, res) => {
         let id = parseInt(req.params.id);
@@ -125,7 +153,16 @@ const productsController = {
             title: title,
             products: products
         });
-    }
+    },
+    test: (req, res) => {
+        // db.Product.findByPk(1, {
+        //     include: ['brand']
+        // })
+        // .then( product => {
+        //     console.log(product.brand.name);
+        // });
+        // res.send('Funcionando');
+    },
 };
 
 module.exports = productsController;
