@@ -22,12 +22,13 @@ const validation = [
                 .notEmpty().withMessage('Tienes que escribir un precio de venta.').bail()
                 .isNumeric().withMessage('El precio de venta debe ser númerico.'), 
     body('image').custom((value, { req }) => {
+        const { id } = req.params;
         const { file } = req;
         const acceptedExtensions = ['.jpg', '.png', '.gif', '.webp'];
 
-        if( !file ) {
+        if( !file && !id) {
             throw new Error('Tienes que subir una imagen.');
-        } else {
+        } else if (file && !id) {
             const fileExtension = path.extname(file.originalname);
             if( !acceptedExtensions.includes(fileExtension) ) {
                 throw new Error(`Las extensiones de archivo permitidas son ${acceptedExtensions.join(', ')}`);

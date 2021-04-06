@@ -8,7 +8,6 @@ const mainController = {
                 include: ['brand', 'images', 'inventory', 'measure']
             })
             .then(products => {
-                console.log(products);
                 const title = 'Listado de Productos | Merkar';
                 res.render('home', {
                     title,

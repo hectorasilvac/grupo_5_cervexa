@@ -71,7 +71,7 @@
           <article class="product-details">
             <a href="/products/<%= product.id %>" data-1>
             <div class="item-image-container">
-              <img class="item-image" src="<%= product.images[0].url %>" alt="product.images[0].alt" />
+              <img class="item-image" src="/images/products/<%= product.images[0].url %>" alt="product.images[0].alt" />
             </div>
             <p data-1><%= product.category %></p>
             <h3 class="item-title"><%= `${product.name} ${product.content}${product.measure.value}`  %></h3>

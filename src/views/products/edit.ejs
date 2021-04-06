@@ -9,37 +9,46 @@
         <section class="edit-product" data-1>
             <% if ( product === null ) { %>
             <h2 data-1>Agregar un producto</h2>
-            <form action="/products/" method="POST" enctype="multipart/form-data">
+            <form class="basic-form" action="/products/" method="POST" enctype="multipart/form-data">
             <% } else { %>
             <h2 data-1>Editar un producto</h2>
-            <form id="deleteItem" action="/products/<%= product?.id %>?_method=DELETE" method="POST"></form>
-            <form action="/products/<%= product?.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-            
+            <form class="basic-form" action="/products/<%= product?.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                 <% } %>
-                <p data-4>
-                    <label for="name">Nombre del producto:</label>
-                    <input id="name" name="name" type="text" value="<%= oldData?.name || product?.name %>" data-4>
+                <p class="name user-entry">
+                    <label for="name">Nombre:</label>
+                    <input id="name" <%= locals?.errors?.name ? 'class=invalid' : null %> name="name" type="text" value="<%= oldData?.name || product?.name %>">
                     <% if (locals?.errors?.name ) { %>
-                        <span><%= errors?.name?.msg %></span>
+                        <span class="error"><%= errors?.name?.msg %></span>
                     <% } %>
                 </p>
-                <p data-4>
+                <p class="brand user-entry">
+                    <label for="brand">Marca:</label>
+                    <select name="brand" id="brand">
+                        <% brands.forEach( brand => {  %>
+                            <option value="<%= brand.id %>"><%= brand.name %></option>
+                        <% }); %>
+                    </select>
+                    <% if (locals?.errors?.brand ) { %>
+                        <span class="error"><%= errors?.brand?.msg %></span>
+                    <% } %>
+                </p>
+                <p class="description user-entry">
                     <label for="description">Descripción:</label>
-                    <input id="description" name="description" type="text" value="<%= oldData?.description || product?.description %>" data-4>
+                    <input id="description" name="description" type="text" value="<%= oldData?.description || product?.description %>" >
                     <% if (locals?.errors?.description ) { %>
-                        <span><%= errors?.description?.msg %></span>
+                        <span class="error"><%= errors?.description?.msg %></span>
                     <% } %>
                 </p>
-                <p data-4>
+                <p class="content user-entry">
                     <label for="content">Contenido:</label>
-                    <input id="content" name="content" type="number" value="<%= oldData?.content || product?.content %>" data-4>
+                    <input id="content" name="content" type="number" value="<%= oldData?.content || product?.content %>" >
                     <% if (locals?.errors?.content ) { %>
-                        <span><%= errors?.content?.msg %></span>
+                        <span class="error"><%= errors?.content?.msg %></span>
                     <% } %>
                 </p>
-                <p data-4>
+                <p class="measure user-entry">
                     <label for="measure">Medida:</label>
-                    <!-- <input id="measure" name="measure" type="number" value="<%= oldData?.measure || product?.measure %>" data-4> -->
+                    <!-- <input id="measure" name="measure" type="number" value="<%= oldData?.measure || product?.measure %>" > -->
 
                     <select name="measure" id="measure">
                         <% measures.forEach( measure => {  %>
@@ -47,61 +56,72 @@
                         <% }); %>
                     </select>
                     <% if (locals?.errors?.measure ) { %>
-                        <span><%= errors?.measure?.msg %></span>
+                        <span class="error"><%= errors?.measure?.msg %></span>
                     <% } %>
                 </p>
-                <p data-4>
+                <p class="image user-entry">
                     <label for="image">Imagen:</label>
-                    <input id="image" name="image" type="file" value="<%= product?.image %>" data-4>
+                    <input id="image" name="image" type="file" value="<%= product?.image %>" >
                     <% if (locals?.errors?.image ) { %>
-                        <span><%= errors?.image?.msg %></span>
+                        <span class="error"><%= errors?.image?.msg %></span>
                     <% } %>
                 </p>
-                <p data-4>
+                <p class="category user-entry">
                     <label for="category">Categoría:</label>
-                    <!-- <input id="category" name="category" type="text" value="<%= oldData?.category || product?.category %>" data-4> -->
+                    <!-- <input id="category" name="category" type="text" value="<%= oldData?.category || product?.category %>" > -->
                     <select name="category" id="category">
                         <% categories.forEach( category => {  %>
                             <option value="<%= category.id %>"><%= category.name %></option>
                         <% }); %>
                     </select>
                     <% if (locals?.errors?.category ) { %>
-                        <span><%= errors?.category?.msg %></span>
+                        <span class="error"><%= errors?.category?.msg %></span>
                     <% } %>
                 </p>
-                <p data-4>
-                    <label for="stock">Stock:</label>
-                    <input id="stock" name="stock" type="number" value="<%=  oldData?.stock || product?.stock %>" data-4>
+                <p class="inventory-id user-entry" hidden>
+                    <label for="inventoryId">ID de Inventario</label>
+                    <input id="inventoryId" name="inventoryId" type="number" value="<%=  oldData?.inventoryId || product?.inventory?.id %>" readonly>
+                    <% if (locals?.errors?.inventoryId ) { %>
+                        <span class="error"><%= errors?.inventoryId?.msg %></span>
+                    <% } %>
+                </p>
+                <p class="stock user-entry">
+                    <label for="stock">Stock</label>
+                    <input id="stock" name="stock" type="number" value="<%=  oldData?.stock || product?.inventory?.stock %>" >
                     <% if (locals?.errors?.stock ) { %>
-                        <span><%= errors?.stock?.msg %></span>
+                        <span class="error"><%= errors?.stock?.msg %></span>
                     <% } %>
                 </p>
-                <p data-4>
-                    <label for="expirationDate">Fecha de Vencimiento:</label>
-                    <input id="expirationDate" name="expirationDate" type="date" value="<%=  oldData?.expirationDate || product?.expirationDate %>" data-4>
+                <p class="expiration-date user-entry">
+                    <label for="expirationDate">Fecha de Vencimiento</label>
+                    <input id="expirationDate" name="expirationDate" type="date" value="<%=  oldData?.expirationDate || product?.inventory?.expirationDate %>" >
                     <% if (locals?.errors?.expirationDate ) { %>
-                        <span><%= errors?.expirationDate?.msg %></span>
+                        <span class="error"><%= errors?.expirationDate?.msg %></span>
                     <% } %>
                 </p>
-                <p data-4>
-                    <label for="purchasePrice">Precio de Compra:</label>
-                    <input id="purchasePrice" name="purchasePrice" type="number" value="<%=  oldData?.purchasePrice || product?.purchasePrice %>" data-4>
+                <p class="purchase-price user-entry">
+                    <label for="purchasePrice">Precio de Compra</label>
+                    <input id="purchasePrice" name="purchasePrice" type="number" value="<%=  oldData?.purchasePrice || product?.inventory?.purchasePrice %>" >
                     <% if (locals?.errors?.purchasePrice ) { %>
-                        <span><%= errors?.purchasePrice?.msg %></span>
+                        <span class="error"><%= errors?.purchasePrice?.msg %></span>
                     <% } %>
                 </p>
-                <p data-4>
+                <p class="sale-price user-entry">
                     <label for="salePrice">Precio de Venta:</label>
-                    <input id="salePrice" name="salePrice" type="number" value="<%=  oldData?.salePrice || product?.salePrice %>" data-4>
+                    <input id="salePrice" name="salePrice" type="number" value="<%=  oldData?.salePrice || product?.inventory?.salePrice %>" >
                     <% if (locals?.errors?.salePrice ) { %>
-                        <span><%= errors?.salePrice?.msg %></span>
+                        <span class="error"><%= errors?.salePrice?.msg %></span>
                     <% } %>
                 </p>
-                <button type="reset" data-4>Limpiar</button>
-                <button type="submit" data-4>Guardar</button>
-                <% if(product !== null) { %>
-                        <button type="submit" form="deleteItem" data-4>Eliminar</button>
-                <% } %>
+                <p class="form-buttons">
+                    <button type="reset" data-4 >Limpiar</button>
+                    <button type="submit" data-4 >Guardar</button>
+                    <% if(product !== null) { %>
+                        <form id="deleteItem" action="/products/<%= product?.id %>?_method=DELETE" method="POST">
+                            <button type="submit" form="deleteItem" data-4>Eliminar</button>
+                        </form>
+                    <% } %>
+                </p>
             </form>
         </section>
     </main>

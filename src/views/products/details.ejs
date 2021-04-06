@@ -8,12 +8,12 @@
     <section class="product-info" data-1>
       <h2 hidden>Detalle de Producto</h2>
       <article class="product-content">
-        <img class="product-image" src="/images/products/<%= product.image %>" alt="<%= product.name %>" data-1>
+        <img class="product-image" src="/images/products/<%= product.images[0].url %>" alt="<%= product.name %>" data-1>
         <div class="product-description">
-          <p data-6><%= product.category %></p>
+          <p data-6><%= product.category.name %></p>
           <h3 data-1><%= product.name %></h3>
           <p><%= product.description %></p>
-          <p data-5>$<%= product.price.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") %></p>
+          <p data-5>$<%= product.inventory.salePrice.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") %></p>
           <form data-1>
             <div class="product-quantity">
               <button>-</button>
@@ -22,6 +22,9 @@
             </div>
             <button data-5>Agregar al Carrito</button>
           </form>
+          <% if(locals.userLogged) { %>
+          <a href="<%= product.id %>/edit">Editar</a>
+          <% } %>
         </div>
       </article>
     </section>

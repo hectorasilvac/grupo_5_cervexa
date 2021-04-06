@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 
 const usersController = require('../controllers/usersController');
@@ -13,7 +14,7 @@ router.get('/login', guestMiddleware, usersController.login);
 router.get('/logout', usersController.logout);
 router.get('/profile', authMiddleware, usersController.profile);
 router.post('/login', loginValidations, usersController.loginProcess);
-router.get('/register', guestMiddleware, usersController.register);
+router.get('/register', guestMiddleware, usersController.create);
 router.post('/create', upload.single('profileImage'), registerValidations, usersController.processRegister);
 
 module.exports = router;

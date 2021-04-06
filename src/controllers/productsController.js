@@ -1,7 +1,9 @@
+/* eslint-disable radix */
 const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
 const db = require('../../database/models');
+const { verifyErrors, renderErrors } = require('../utilities/general');
 
 const productsPath = path.resolve(__dirname, '../data/products.json');
 
@@ -23,69 +25,63 @@ const productsController = {
         res.redirect('/');
     },
     details: (req, res) => {
-        let id = parseInt(req.params.id);
-
-        if ( id !== undefined ) {
-
-        let products = fs.readFileSync(productsPath, 'utf-8');
-        products = JSON.parse(products);
-
-        let product = products.find( product => product.id === id);
-
-        let title = product?.name;
-        res.render('products/details', {
-            title: title,
-            product: product
-        });
-
-    } else {
-            console.log('No existe la ID')
+        const id = parseInt(req.params.id);
+        const includes = {
+            include: ['measure', 'category', 'images', 'inventory']
         }
+
+        db.Product.findByPk(id, includes)
+            .then( product => {
+                const title = product.name.charAt(0).toUpperCase() + product.name.slice(1);
+                 res.render('products/details', {
+                     title,
+                     product
+                });
+            })
+            .catch( error => {
+                res.send('Producto no existe.');
+            });
     },
-    create: (req, res, next, variables = null) => {
+    create: (req, res, variables = null) => {
         const getCategories = db.Category.findAll();
         const getMeasures = db.Measure.findAll();
+        const getBrands = db.Brand.findAll();
 
-        Promise.all([getCategories, getMeasures])
-            .then( ([categories, measures]) => {
+        Promise.all([getCategories, getMeasures, getBrands])
+            .then( ([categories, measures, brands]) => {
                 const title = 'Creación de Producto';
 
                 return res.render('products/edit', {
                     title,
                     categories,
                     measures,
+                    brands,
                     ...variables
                 })
             });
     },
     editById: (req, res) => {
-        let title = 'Editar Producto';
-        let id = parseInt(req.params.id);
-
-        let products = fs.readFileSync(productsPath, 'utf-8');
-        products = JSON.parse(products);
-
-        let product = products.find( product => product.id === id);
-
-        if (product !== undefined) {
-            res.render('products/edit', {
-                title: title,
-                product: product
-            });
-        } else {
-            res.send('Error');
+        const id = parseInt(req.params.id);
+        const includes = {
+            include: ['measure', 'category', 'images', 'inventory']
         }
-    },
-    addRegister: (req, res, next) => {
-        const validations = validationResult(req);
-        const { file } = req;
 
-        const formHasErrors = validations.errors.length > 0;
-        if(formHasErrors) {
-            return productsController.create(req, res, next, {
-                errors: validations.mapped(),
-                oldData: req.body,
+        db.Product.findByPk(id, includes)
+            .then( product => {
+                const title = 'Editar Producto';
+                return productsController.create(req, res, {title, product});
             });
+    },
+    addRegister: (req, res) => {
+        const { file } = req;
+        const errorsExist = verifyErrors(req, validationResult);
+
+        const setErrors = renderErrors(req, res, errorsExist);
+        const setController = setErrors(productsController);
+        const showErrors = setController();
+
+        if (errorsExist) {
+            return showErrors;
         }
 
         const createImage = db.Image.create({
@@ -100,6 +96,7 @@ const productsController = {
             measure: req.body.measure,
             category_id: req.body.category,
             measure_id: req.body.measure,
+            brand_id: req.body.brand,
             inventory: {
                 expirationDate: req.body.expirationDate,
                 purchasePrice: req.body.purchasePrice,
@@ -119,30 +116,51 @@ const productsController = {
                     });
             })
             .catch( error => {
-                console.log(error);
+                res.send('Ha ocurrido un error al agregar el regsitro.');
             });
 
         return res.redirect('/products/create');
     },
     save: (req, res) => {
-        let id = parseInt(req.params.id);
-        let productsFile = fs.readFileSync(productsPath, 'utf-8');
-        let products = JSON.parse(productsFile);
+        const { file } = req;
+        const id = parseInt(req.params.id);
+        const errorsExist = verifyErrors(req, validationResult);
+        
+        const setErrors = renderErrors(req, res, errorsExist);
+        const setController = setErrors(productsController);
+        const showErrors = setController({ product: { id } });
 
-        let product = products.find( product => product.id === id );
-        product.id = id;
-        product.name = req.body.name;
-        product.description = req.body.description;
-        product.image = req.file.filename;
-        product.category = req.body.category;
-        product.price = req.body.price;
+        if (errorsExist) {
+            return showErrors;
+        }
 
-        let filteredProducts = products.filter( product => product.id !== id );
-        filteredProducts.push(product);
-        let totalProducts = JSON.stringify(filteredProducts);
-        fs.writeFileSync(productsPath, totalProducts);
+        db.Product.update(
+            {
+                name: req.body.name,
+                description: req.body.description,
+                content: req.body.content,
+                measure_id: req.body.measure,
+                brand_id: req.body.brand,
+                category_id: req.body.category,
+            },
+            { where: { id } }
+        )
+        .then( product => {
+            db.Inventory.update(
+                {
+                    expirationDate: req.body.expirationDate,
+                    purchasePrice: req.body.purchasePrice,
+                    salePrice: req.body.salePrice,
+                    stock: req.body.stock
+                },
+                { where: { id: req.body.inventoryId } }
+            )
+        })
+        .catch( error => {
+            res.send('Ha ocurrido un error.');
+        });
 
-        res.redirect('/');
+        return res.redirect(`/products/${id}`);
     },
     showAll:(req,res) => {
         let products = fs.readFileSync(productsPath, 'utf-8');
@@ -153,15 +171,6 @@ const productsController = {
             title: title,
             products: products
         });
-    },
-    test: (req, res) => {
-        // db.Product.findByPk(1, {
-        //     include: ['brand']
-        // })
-        // .then( product => {
-        //     console.log(product.brand.name);
-        // });
-        // res.send('Funcionando');
     },
 };
 

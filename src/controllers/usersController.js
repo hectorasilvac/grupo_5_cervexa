@@ -3,52 +3,58 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
 const Database = require('../models/Database');
+const db = require('../../database/models');
+const { verifyErrors, renderErrors } = require('../utilities/general');
 
 const User = new Database('User');
 
 const usersController = {
-    register: (req, res) => {
+    create: (req, res, variables = null) => {
         const title = 'Crear una cuenta';
         res.render('users/register', {
-            'title': title
+            title,
+            ...variables
         });
     },
     processRegister: (req, res) => {
-        const validation = validationResult(req);
-        const title = 'Creación de Usuario | Cervexa';
-
-        if (validation.errors.length > 0) {
-            return res.render('users/register', {
-                errors: validation.mapped(),
-                oldData: req.body,
-                title,
-            });
-        }
-
-        const userInDB = User.findByField('email', req.body.email);
-
-        if (userInDB) {
-            return res.render('users/register', {
-                errors: {
-                    email: {
-                        msg: 'Este correo ya está registrado.'
-                    }
-                },
-                oldData: req.body,
-                title
-            });
-        }
-
-        const userToCreate = {
-            ...req.body,
-            password: bcryptjs.hashSync(req.body.password, 10),
-            profileImage: req.file.filename
-        };
+        const errorsExist = verifyErrors(req, validationResult);
+        const setErrors = renderErrors(req, res, errorsExist);
+        const setController = setErrors(usersController);
         
-        delete userToCreate.acceptedTerms;
-        const userCreated = User.create(userToCreate);
+        // if (errorsExist) {
+        //     const showErrors = setController();
+        //     return showErrors;
+        // }
 
-        return res.redirect('/users/login');
+        const email = req.body.email.toLowerCase();
+
+        db.User.findOne({
+            where: {
+                email
+            }
+        }).then( result => {
+            if (result) {
+                const showErrors = setController({
+                    errors: {
+                        email: {
+                            msg: 'Este correo ya está registrado.'
+                        }
+                    },
+                });
+                return showErrors;
+            }
+        });
+
+        // const userToCreate = {
+        //     ...req.body,
+        //     password: bcryptjs.hashSync(req.body.password, 10),
+        //     profileImage: req.file.filename
+        // };
+        
+        // delete userToCreate.acceptedTerms;
+        // const userCreated = User.create(userToCreate);
+
+        // return res.redirect('/users/login');
     },
     login: (req, res) => {
         const title = 'Cuenta';

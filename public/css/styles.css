@@ -221,6 +221,53 @@ section > header > h2 {
     text-transform: uppercase;
 }
 
+form.basic-form {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: normal;
+    justify-content: space-between;
+}
+
+form.basic-form > p.user-entry {
+    flex: 1 40%;
+    margin: 1rem;
+}
+
+form > p.user-entry > label {
+    display: block;
+}
+
+form > p.user-entry > span.error {
+    display: block;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    margin-top: .5rem;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+    padding: .5rem;
+}
+
+form > p.user-entry > select,
+form > p.user-entry > input {
+    border: .1rem solid var(--secondary-color);
+    max-width: 100%;
+    padding: .8rem;
+    width: 100%;
+}
+
+form > p.user-entry > select.invalid,
+form > p.user-entry > input.invalid {
+    border: .1rem solid #721c24;
+}
+
+form > p.form-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin: 1rem;
+}
+
 section[data-1] {
     max-width: 120rem;
     padding: 1.6rem;
