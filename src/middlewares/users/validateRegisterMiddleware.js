@@ -15,20 +15,20 @@ const validation = [
         .isEmail().withMessage('El correo electrónico no es válido.'),
     body('acceptedTerms')
         .notEmpty().withMessage('Debes confirmar que has leído  los términos y condiciones.'),
-    body('profileImage').custom((value, { req }) => {
-        const { file } = req;
-        const acceptedExtensions = ['.jpg', '.webp', '.png', '.gif'];
+    // body('profileImage').custom((value, { req }) => {
+    //     const { file } = req;
+    //     const acceptedExtensions = ['.jpg', '.webp', '.png', '.gif'];
 
-        if ( !file ) {
-            throw new Error('Tienes que subir una imagen.');
-        } else {
-           const fileExtension = path.extname(file.originalname);
-           if ( !acceptedExtensions.includes(fileExtension) ) {
-               throw new Error(`Solo se permiten los formatos ${acceptedExtensions.join(', ')}`);
-           }
-        }
-        return true;
-    })
+    //     if ( !file ) {
+    //         throw new Error('Tienes que subir una imagen.');
+    //     } else {
+    //        const fileExtension = path.extname(file.originalname);
+    //        if ( !acceptedExtensions.includes(fileExtension) ) {
+    //            throw new Error(`Solo se permiten los formatos ${acceptedExtensions.join(', ')}`);
+    //        }
+    //     }
+    //     return true;
+    // })
 ];
 
 module.exports = validation;

@@ -1,19 +1,33 @@
-const Database = require('../../models/Database');
-const User = new Database('User');
+const db = require('../../../database/models');
+const { existsInDB } = require('../../utilities');
 
-function userLoggedMiddleware(req, res, next) {
+const userLoggedMiddleware = async (req, res, next) => {
     res.locals.isLogged = false;
-    const emailInCookie = req?.cookies?.userEmail;
-    const userFromCookie = User.findByField('email', emailInCookie);
 
-    if(userFromCookie) {
-        const { password, ...userInfo } = userFromCookie;
-        req.session.userLogged = userInfo;
-    }
-
-    if(req.session && req.session.userLogged) {
-        res.locals.isLogged = true;
-        res.locals.userLogged = req.session.userLogged;
+    if(req.cookies.userEmail) {
+        const emailInCookie = req.cookies.userEmail;
+        const userFromCookie = await existsInDB({
+            model: db.User,
+            condition: { email: emailInCookie }
+        });
+    
+        if(userFromCookie) {
+        const {
+            id,
+            email,
+            first_name: firstName,
+            last_name: lastName,
+            profile_image: profileImage,
+            rank_id: rankId
+        } = userFromCookie;
+        const userInfo = { id, email, firstName, lastName, profileImage, rankId };
+            req.session.userLogged = userInfo;
+        }
+    
+        if(req.session && req.session.userLogged) {
+            res.locals.isLogged = true;
+            res.locals.userLogged = req.session.userLogged;
+        }
     }
     next();
 }

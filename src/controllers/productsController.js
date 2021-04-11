@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
 const db = require('../../database/models');
-const { verifyErrors, renderErrors } = require('../utilities/general');
+const { errorsExist, returnAMethod, showErrors } = require('../utilities');
 
 const productsPath = path.resolve(__dirname, '../data/products.json');
 
@@ -42,7 +42,7 @@ const productsController = {
                 res.send('Producto no existe.');
             });
     },
-    create: (req, res, variables = null) => {
+    create: ({req, res, variables = null}) => {
         const getCategories = db.Category.findAll();
         const getMeasures = db.Measure.findAll();
         const getBrands = db.Brand.findAll();
@@ -64,7 +64,7 @@ const productsController = {
         const id = parseInt(req.params.id);
         const includes = {
             include: ['measure', 'category', 'images', 'inventory']
-        }
+        };
 
         db.Product.findByPk(id, includes)
             .then( product => {
@@ -73,22 +73,24 @@ const productsController = {
             });
     },
     addRegister: (req, res) => {
-        const { file } = req;
-        const errorsExist = verifyErrors(req, validationResult);
+        const validationParameters = {req, validationResult};
+        const goToCreate = returnAMethod(productsController.create);
+        const variablesToShow = showErrors(validationParameters);
 
-        const setErrors = renderErrors(req, res, errorsExist);
-        const setController = setErrors(productsController);
-        const showErrors = setController();
-
-        if (errorsExist) {
-            return showErrors;
+        // Verify if the create form has errors
+        const thereAreErrors = errorsExist(validationParameters);
+        if (thereAreErrors) {
+            const variables = variablesToShow();
+            const loadMethod = goToCreate({req, res, variables});
+            return loadMethod;
         }
 
+        // If no errors have ocurred, then try to create the product
         const createImage = db.Image.create({
-            url: file.filename,
+            url: req.file.filename,
             alt: 'Probando Imagen 13'
         });
-
+        
         const createProduct = db.Product.create({
             name: req.body.name,
             description: req.body.description,
@@ -115,11 +117,12 @@ const productsController = {
                         productFound.setImages([image.id])
                     });
             })
-            .catch( error => {
+            .catch(error => {
                 res.send('Ha ocurrido un error al agregar el regsitro.');
             });
 
         return res.redirect('/products/create');
+
     },
     save: (req, res) => {
         const { file } = req;
