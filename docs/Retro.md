@@ -104,3 +104,24 @@ Para este sprint se cambia completamente la metodología, generando la totalidad
 - Implementar de manera permanente un commit por cada tarea en trello.
 - Relizar el Daily.md.
 - Estar mas pendientes a la implementación de la semántica (tags).
+
+## Metodologia de trabajo Sprint 5
+
+PSe continua con metodologia generando la totalidad del sprint de manera individual y al final se evaluan las actividades de cada integrante para así en comun acuerdo realizar los merge a conveniencia del proyecto integrador.
+
+## Qué cosas han funcionado bien
+
+- Continuamos dando cumplimiento a todas las solicitudes establecidas para el sprint 5, igualmente con los tiempos de entrega.
+
+## Cuales hay que mejorar
+
+- Se intentan manejar las tablas de trello de manera atomica dando cumplimiento a lo hablado en la retrospectiva del sprint 3, pero debido a la metodologia individual queda un poco compleja la implementación.
+- Se tiene en cuenta pero no se implementa completamente el commit por cada una de las tareas de trello, poco a poco vamos generando costumbre para con esta recomendación.
+
+## Cuales son los problemas que podrían impedirle progresar adecuadamente
+
+- El problema se ah presentado por parte de el compañero Andrés Roa, ya que debido a un problema familiar no ah podido estar 100% conectado con el curso y con el proyecto integrador, por lo tanto mientras el compañero retoma la normalidad, Hector Silva toma las riendas del mismo.
+
+## Plan de accion de mejora
+
+- Continuar con la nueva metodología.
