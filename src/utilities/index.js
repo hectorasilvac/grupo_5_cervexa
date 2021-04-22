@@ -21,7 +21,9 @@ const General = {
             where: condition
         });
     },
-
+    setImages: (element, image) => {
+        element.setImages(image);
+    }
 }
 
 module.exports = General;

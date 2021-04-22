@@ -24,6 +24,9 @@
           </form>
           <% if(locals.userLogged) { %>
           <a href="<%= product.id %>/edit">Editar</a>
+          <form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+            <button id="delete-product" type="submit">Eliminar</button>
+          </form>
           <% } %>
         </div>
       </article>

@@ -10,7 +10,7 @@
                 <h2>Crear una cuenta</h2>
                 <p>Por favor diligencia la siguiente información para crear tu cuenta.</p>
             </header>
-            <form action="/users/create" method="POST" enctype="multipart/form-data">
+            <form action="/users/create" method="POST">
                 <p class="form-entry">
                     <label for="firstName">Nombre</label>
                     <input id="firstName" type="text"
@@ -40,8 +40,9 @@
                 </p>
                 <p class="form-entry">
                     <label for="profileImage">Imagen de Perfil</label>
-                    <input id="profileImage" type="file"
-                        class="<%= locals.errors && errors.profileImage ? 'is-invalid' : null %>" name="profileImage" />
+                    <input id="profileImage" type="url"
+                        class="<%= locals.errors && errors.profileImage ? 'is-invalid' : null %>" name="profileImage" 
+                        value="<%= locals.oldData ? oldData.profileImage : null %>" placeholder="URL de Imagen de Perfil" />
                     <% if (locals.errors && errors.profileImage) {%>
                     <span><%= errors.profileImage.msg %></span>
                     <% }%>

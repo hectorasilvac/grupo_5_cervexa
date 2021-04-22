@@ -4,31 +4,38 @@ const { existsInDB } = require('../../utilities');
 const userLoggedMiddleware = async (req, res, next) => {
     res.locals.isLogged = false;
 
-    if(req.cookies.userEmail) {
-        const emailInCookie = req.cookies.userEmail;
-        const userFromCookie = await existsInDB({
+    // Check if there is an e-mail in the cookies to log in automatically
+    const emailInCookie = req?.cookies?.userEmail;
+    if (emailInCookie) {
+        const user = await existsInDB({
             model: db.User,
-            condition: { email: emailInCookie }
+            condition: {
+                email: emailInCookie
+            }
         });
-    
-        if(userFromCookie) {
-        const {
-            id,
-            email,
-            first_name: firstName,
-            last_name: lastName,
-            profile_image: profileImage,
-            rank_id: rankId
-        } = userFromCookie;
-        const userInfo = { id, email, firstName, lastName, profileImage, rankId };
+
+        if (user) {
+            // Store only non-sensitive user information
+            const userInfo = {
+                first_name: user.first_name,
+                last_name: user.last_name,
+                email: user.email,
+                profile_image: user.profile_image,
+                rank_id: user.rank_id
+            };
+
+         // Establish a login session and assign user information to it
             req.session.userLogged = userInfo;
         }
-    
-        if(req.session && req.session.userLogged) {
-            res.locals.isLogged = true;
-            res.locals.userLogged = req.session.userLogged;
-        }
     }
+
+    // Check if the user has logged in succesfully
+    const emailInSession = req?.session?.userLogged?.email;
+    if (emailInSession) {
+        res.locals.isLogged = true;
+        res.locals.userLogged = req.session.userLogged;
+    }
+
     next();
 }
 

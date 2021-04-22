@@ -1,12 +1,8 @@
 const bcryptjs = require('bcryptjs');
-const fs = require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
-const Database = require('../models/Database');
 const db = require('../../database/models');
 const { errorsExist, existsInDB, returnAMethod, showErrors } = require('../utilities');
-
-const User = new Database('User');
 
 const usersController = {
     create: ({req, res, variables = null}) => {
@@ -16,49 +12,48 @@ const usersController = {
             ...variables
         });
     },
-    processRegister: (req, res) => {
-        const errorsExist = verifyErrors(req, validationResult);
-        const setErrors = renderErrors(req, res, errorsExist);
-        const setController = setErrors(usersController);
-        
-        if (errorsExist) {
-            const showErrors = setController();
-            return showErrors;
+    processRegister: async (req, res) => {
+        const validationParameters = {req, validationResult};
+        const goToCreate = returnAMethod(usersController.create);
+        const variablesToShow = showErrors(validationParameters);
+
+        // Verify if the create form has errors
+        const thereAreErrors = errorsExist(validationParameters);
+        if (thereAreErrors) {
+            const variables = variablesToShow();
+            return goToCreate({req, res, variables});
         }
 
+        // Verify if the email exists in the database, if so, return an error
         const email = req.body.email.toLowerCase();
-
-        db.User.findOne({
-            where: {
-                email
-            }
-        }).then( result => {
-            if (result) {
-                const showErrors = setController({
-                    errors: {
-                        email: {
-                            msg: 'Este correo ya está registrado.'
-                        }
-                    },
-                });
-                return showErrors;
-            }
+        const emailExists = await existsInDB({
+            model: db.User,
+            condition: { email }
         });
 
-        console.log(req.body);
+        if(emailExists) {
+            const wrongEmail = {
+                errors: {
+                    email: { msg: 'El correo electrónico ya existe.'}
+                }
+            };
+            const variables = variablesToShow(wrongEmail);
+            return goToCreate({req, res, variables});
+        }
+
+        // If no errors have ocurred, then try to register the user
 
         const userToCreate = {
             first_name: req.body.firstName.toLowerCase(),
             last_name: req.body.lastName.toLowerCase(),
             email: req.body.email.toLowerCase(),
             password: bcryptjs.hashSync(req.body.password, 10),
-            // profileImage: req.file.filename
+            profile_image: req.body.profileImage.toLowerCase()
         };
 
-        db.User.create(userToCreate)
-        .then( result => {
-            res.redirect('/users/login');
-        });
+        const createUser = await db.User.create(userToCreate);
+
+        return createUser ? res.redirect('/users/login') : res.send('Ha ocurrido un error al registrarse.');
     },
     login: ({req, res, variables = null}) => {
         const title = 'Cuenta';
@@ -87,14 +82,13 @@ const usersController = {
         });
 
         if(!emailToLogin) {
-            const noEmail = {
+            const wrongEmail = {
                 errors: {
                     email: { msg: 'El correo electrónico no es válido.'}
                 }
             };
-            const variables = variablesToShow(noEmail);
-            const loadMethod = goToLogin({req, res, variables});
-            return loadMethod;
+            const variables = variablesToShow(wrongEmail);
+            return goToLogin({req, res, variables});
         }
 
         // Check that the password is correct
@@ -111,10 +105,19 @@ const usersController = {
             return loadMethod;
         }
 
-        // Save user information and allow access
-        delete emailToLogin.password;
-        req.session.userLogged = emailToLogin;
+        // Store only non-sensitive user information
+        const userInfo = {
+            first_name: emailToLogin.first_name,
+            last_name: emailToLogin.last_name,
+            email: emailToLogin.email,
+            profile_image: emailToLogin.profile_image,
+            rank_id: emailToLogin.rank_id
+        };
 
+        // Establish a login session and assign user information to it
+        req.session.userLogged = userInfo;
+
+        // Check if the user wants to remember their information to log in automatically for the next 12 hours
         if(req.body.rememberUser) {
             res.cookie('userEmail', req.body.email, { maxAge: ((1000 * 60) * 60) * 12, secure: false });
         }
@@ -122,7 +125,7 @@ const usersController = {
         return res.redirect('/users/profile');
     },
     profile: (req, res) => {
-        const user = req.session.userLogged;
+        const user = req?.session?.userLogged;
         const title = 'Perfil | Cervexa';
         res.render('users/profile', {user, title})
     },

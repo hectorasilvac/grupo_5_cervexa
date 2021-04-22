@@ -3,12 +3,14 @@
 <%- include('../partials/head') %>
 <body>
   <%- include('../partials/header') %>
-  <main class="m1">
-      Hola <%= user?.lastName %>
-      <% console.log(user) %>
-      <img src="/images/users/<%= user?.profileImage %>"/>
+
+<main class="m1">
+  <div class="account-settings d2">
+    <header>
+      <h3>Mi Cuenta</h3>
+    </header>
+  </div>
   </main>
   <%- include('../partials/footer') %>
 </body>
-
 </html>
