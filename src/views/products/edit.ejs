@@ -117,9 +117,9 @@
                     <button type="reset" data-4 >Limpiar</button>
                     <button type="submit" data-4 >Guardar</button>
                     <% if(product !== null) { %>
-                        <form id="deleteItem" action="/products/<%= product?.id %>?_method=DELETE" method="POST">
-                            <button type="submit" form="deleteItem" data-4>Eliminar</button>
-                        </form>
+                        <form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+                            <button id="delete-product" type="submit" class="button-a w-auto">Eliminar</button>
+                          </form>
                     <% } %>
                 </p>
             </form>

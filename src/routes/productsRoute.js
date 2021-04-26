@@ -6,8 +6,9 @@ const productsController = require('../controllers/productsController');
 const createValidation = require('../middlewares/products/validateCreateMiddleware');
 const upload = require('../middlewares/products/uploadImageMiddleware');
 const userLogged = require('../middlewares/users/userLoggedMiddleware');
+const adminMiddleware = require('../middlewares/users/adminMiddleware');
 
-router.get('/', productsController.showAll);
+router.get('/', adminMiddleware, productsController.showAll);
 router.get('/create', productsController.create);
 router.get('/:id', userLogged, productsController.details);
 router.get('/:id/edit', productsController.editById);

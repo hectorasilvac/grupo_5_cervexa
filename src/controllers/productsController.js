@@ -175,12 +175,18 @@ const productsController = {
         
         return res.redirect(`/products/${id}`);
     },
-    showAll: async (req,res) => {
-        const getAllProducts = db.Product.findAll();
+    showAll: async (req, res) => {
+        const includes = {
+            include: ['brand', 'images', 'inventory', 'measure']
+        };
+        const getAllProducts = db.Product.findAll({...includes});
         const products = await getAllProducts;
 
         const title = 'Listado de Productos | Merkar';
-        res.render('products/list', {title, products});
+        res.render('products/list', {
+            title,
+            products
+        });
     },
 };
 

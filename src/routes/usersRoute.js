@@ -9,6 +9,7 @@ const registerValidations = require('../middlewares/users/validateRegisterMiddle
 const loginValidations = require('../middlewares/users/validateLoginMiddleware');
 const authMiddleware = require('../middlewares/users/authMiddleware');
 const guestMiddleware = require('../middlewares/users/guestMiddleware');
+// const adminMiddleware = require('../middlewares/users/adminMiddleware');
 
 router.get('/login', guestMiddleware, usersController.login);
 router.get('/logout', usersController.logout);

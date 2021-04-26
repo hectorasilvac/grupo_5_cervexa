@@ -12,11 +12,207 @@
     --secondary-color: #b59049;
     --tertiary-color: #ffffff;
     --quaternary-color: #cb3837;
+    --quinary-color: #f6f5f3;
     /* Font Variables */
     --primary-font: 'Work Sans', sans-serif;
     --secondary-font: 'Unna', serif;
     --tertiary-font: 'Roboto', sans-serif;
 }
+
+/**************************************/
+/*********** Custom Classes ***********/
+/**************************************/
+
+.accordion-a {
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-family: var(--secondary-font);
+    font-size: 2rem;
+    font-weight: normal;
+    list-style: none;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+summary.accordion-a::-webkit-details-marker {
+    display: none;
+}
+
+summary.accordion-a::before {
+    content: "+";
+    display: inline-flex;
+    font-size: 2.5rem;
+    padding: 0 1rem;
+    transition: all .5s;
+}
+
+details[open] > summary.accordion-a::before {
+    content: "–";
+    transform: rotate(180deg);
+}
+
+.button-a,
+/* Old Name */
+.btn-primary {
+    background-color: white;
+    border: .1rem solid var(--secondary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+    font-weight: 600;
+    padding: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .5s;
+    width: 100%;
+}
+
+.button-a:hover,
+/* Old Name */
+.btn-primary:hover {
+    background-color:  var(--secondary-color);
+    color: white;
+}
+
+.button-b,
+/* Old Name*/
+button[data-5] {
+    background-color: var(--secondary-color);
+    border: .1rem solid var(--secondary-color);
+    color: white;
+    cursor: pointer;
+    font-family: var(--primary-font);
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .5s;
+}
+
+.button-b:hover,
+/* Old Name*/
+button[data-5]:hover {
+    background-color: #987737;
+}
+
+.container-a {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.container-b {
+    background-color: var(--tertiary-color);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    max-width: 120rem;
+    padding: calc(2.6rem + 1.2vw) calc(.2rem + 5vw);
+    padding: -webkit-calc(2.6rem + 1.2vw) -webkit-calc(.2rem + 5vw);
+    padding: -moz-calc(2.6rem + 1.2vw) -moz-calc(.2rem + 5vw);
+    width: fill-available;
+    width: -moz-available;
+    width: -webkit-fill-available;
+}
+
+.container-c {
+  border-top: .1rem solid var(--secondary-color);
+  padding: 1rem .5rem;
+}
+
+.container-d {
+    display: block;
+    padding: 1rem;
+}
+
+.container-e {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container-f {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.text-a {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin: 0;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+.text-b { 
+    color: var(--secondary-color);
+    font-family: var(--secondary-font);
+    font-size: 2.4rem;
+    font-weight: normal;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/*****************************************/
+/*********** Component Classes ***********/
+/*****************************************/
+
+.bb-secondary {
+  border-bottom: .1rem solid var(--secondary-color);
+}
+
+.bg-quinary {
+    background-color: var(--quinary-color) !important;
+}
+
+.fsize-2 {
+   font-size: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 4rem;
+}
+
+.mt-d5 {
+  margin-top: .5rem;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+  }
+
+.w-auto {
+    width: auto;
+}
+
+/************************************/
+/********** Development Area ********/
+/************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 a[data-1] {
     color: inherit;
@@ -91,18 +287,6 @@ button[data-4]:hover {
     background-color: var(--secondary-color);
 }
 
-button[data-5] {
-    background-color: var(--secondary-color);
-    border: .1rem solid var(--secondary-color);
-    color: white;
-    font-family: var(--primary-font);
-    font-size: 1.6rem;
-    font-weight: 600;
-    padding: 1.5rem;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-}
 
 form[data-1] {
     display: flex;
@@ -433,14 +617,7 @@ ul[data-4] {
     text-align: center;
 }
 
-.btn-primary {
-    color: var(--secondary-color);
-    background-color: white;
-    border: .1rem solid var(--secondary-color);
-    font-weight: 600;
-    padding: 1rem;
-    width: 100%;
-}
+
 
 .cart-content {
     align-items: center;
@@ -1047,6 +1224,10 @@ ul[data-4] {
     text-align: center;
 }
 
+/*******************************************************/
+/*********** View for minimum 768px displays ***********/
+/*******************************************************/
+
 @media only screen and (min-width: 768px) {
     /* :root {
         font-size: 10.5px;
@@ -1127,6 +1308,10 @@ ul[data-4] {
     }
         
 }
+
+/********************************************************/
+/*********** View for minimum 1200px displays ***********/
+/********************************************************/
 
 @media only screen and (min-width: 1200px) {
 

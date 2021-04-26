@@ -23,10 +23,9 @@
             <button data-5>Agregar al Carrito</button>
           </form>
           <% if(locals.userLogged) { %>
-          <a href="<%= product.id %>/edit">Editar</a>
-          <form action="/products/<%= product.id %>?_method=DELETE" method="POST">
-            <button id="delete-product" type="submit">Eliminar</button>
-          </form>
+            <div class="container-e mt-1">
+              <a href="<%= product.id %>/edit" class="button-a w-auto">Editar</a>
+            </div>
           <% } %>
         </div>
       </article>

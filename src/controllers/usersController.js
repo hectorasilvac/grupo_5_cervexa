@@ -126,6 +126,15 @@ const usersController = {
     },
     profile: (req, res) => {
         const user = req?.session?.userLogged;
+        const adminPermission = 1;
+
+        // Verify if the user is an administrator and add that validation as a property
+        if (user.rank_id === adminPermission) {
+            user.adminPermission = true;
+        } else {
+            user.admninPermission = false;
+        }
+
         const title = 'Perfil | Cervexa';
         res.render('users/profile', {user, title})
     },

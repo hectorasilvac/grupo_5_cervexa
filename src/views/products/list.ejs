@@ -3,22 +3,30 @@
     <%- include('../partials/head') %>
 <body>
     <%- include('../partials/header') %>
-    <main>
-        <section class="all-products" data-1>
-            <h2 hidden>Todos los productos</h2>
+    <main class="container-a bg-quinary">
+        <section class="container-b">
+          <header>
+            <h3>Gestión de Productos</h3>
+            <p>
+              <a href="/products/create" class="button-a">Crear Producto</a>
+              <input type="search">
+            </p>
+          </header>
+          <div id="product-list" class="container-f">
             <% products.forEach( product => { %>
-                <article class="product-details">
-                  <a href="/products/info/<%= product.id %>" data-1>
-                  <div class="item-image-container">
-                    <img class="item-image" src="/images/products/<%= product.image %>" alt="Imagen de Producto" />
-                  </div>
-                  <p data-1><%= product.category %></p>
-                  <h3 class="item-title"><%= product.name %></h3>
-                  <p class="item-number">$<%= product?.price?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")  %></p>
-                </a>
-                  <button class="btn-primary mt-1">COMPRAR</button>
-                </article>
-                <% }); %>
+              <article class="product-details">
+                <a href="/products/<%= product.id %>" data-1>
+                <div class="item-image-container">
+                  <img class="item-image" src="/images/products/<%= product.images[0].url %>" alt="product.images[0].alt" />
+                </div>
+                <p data-1><%= product.category %></p>
+                <h3 class="item-title"><%= `${product.name} ${product.content}${product.measure.value}`  %></h3>
+                <p class="item-number">$<%= product?.inventory.salePrice?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")  %></p>
+              </a>
+                <button class="btn-primary mt-1">COMPRAR</button>
+              </article>
+              <% }); %>
+          </div>
         </section>
     </main>
     

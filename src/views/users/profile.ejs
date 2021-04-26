@@ -4,13 +4,32 @@
 <body>
   <%- include('../partials/header') %>
 
-<main class="m1">
-  <div class="account-settings d2">
-    <header>
-      <h3>Mi Cuenta</h3>
-    </header>
-  </div>
+  <main class="container-a bg-quinary ">
+    <section id="account-profile" class="container-b">
+      <header class="container-a mb-4">
+        <h3 class="text-b">Bienvenido/a, <%= user?.first_name %> <%= user?.last_name %></h3>
+        <a href="/users/logout" class="text-a mt-d5">Cerrar Sesión</a>
+      </header>
+      <details id="my-orders" class="container-c">
+        <summary class="accordion-a">Mis Pedidos</summary>
+        <p>Pedidos AQUÍ</p>
+      </details>
+      <details id="account-information" class="container-c <%= user?.adminPermission ? null : 'bb-secondary'; %>">
+        <summary class="accordion-a">Información de Cuenta</summary>
+        <p>Configuración AQUÍ</p>
+      </details>
+      <% if(user?.adminPermission) { %>
+        <details id="manager-controls" class="container-c bb-secondary" open>
+          <summary class="accordion-a">Panel de Administrador</summary>
+          <p class="container-d">
+            <a class="button-a" href="/products">Gestión de Productos</a>
+            <a class="button-a" href="#">Gestión de Usuarios</a>
+          </p>
+        </details>
+        <% } %>
+    </section>
   </main>
+
   <%- include('../partials/footer') %>
 </body>
 </html>
