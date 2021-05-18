@@ -9,14 +9,12 @@ const userLogged = require('../middlewares/users/userLoggedMiddleware');
 const adminMiddleware = require('../middlewares/users/adminMiddleware');
 
 router.get('/', adminMiddleware, productsController.showAll);
-router.get('/create', productsController.create);
+router.get('/create', adminMiddleware, productsController.create);
 router.get('/:id', userLogged, productsController.details);
 router.get('/:id/edit', productsController.editById);
-
-router.delete('/:id', productsController.delete);
-
+router.delete('/:id', adminMiddleware, productsController.delete);
 router.post('/', upload.single('image'), createValidation, productsController.addRegister);
+/* Save updated product information */
 router.put('/:id', upload.single('image'), createValidation, productsController.save);
-
 
 module.exports = router;

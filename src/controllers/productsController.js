@@ -8,9 +8,10 @@ const { errorsExist, returnAMethod, showErrors, setImages } = require('../utilit
 const productsController = {
     delete: async (req, res) => {
         let id = parseInt(req.params.id);
+        console.log("EJECUTANDO ELIMINAR");
 
         const deletedProduct = await db.Product.destroy({
-            where: { id}
+            where: { id }
         });
 
         res.redirect('/');
@@ -81,7 +82,7 @@ const productsController = {
         // If no errors have ocurred, then try to create the product
         const createImage = db.Image.create({
             url: req.file.filename,
-            alt: 'Probando Imagen 13'
+            alt: req.body.name,
         });
         
         const createProduct = db.Product.create({
@@ -166,7 +167,7 @@ const productsController = {
         if(newImage !== undefined) {
             const createdImage = await db.Image.create({
                 url: req.file.filename,
-                alt: 'Probando Imagen 13'
+                alt: req.body.name,
             });
 
             const foundProduct = await db.Product.findByPk(id);
@@ -181,7 +182,7 @@ const productsController = {
         };
         const getAllProducts = db.Product.findAll({...includes});
         const products = await getAllProducts;
-
+        
         const title = 'Listado de Productos | Merkar';
         res.render('products/list', {
             title,

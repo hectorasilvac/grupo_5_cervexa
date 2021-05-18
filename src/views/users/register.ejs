@@ -39,15 +39,6 @@
                     <% }%>
                 </p>
                 <p class="form-entry">
-                    <label for="profileImage">Imagen de Perfil</label>
-                    <input id="profileImage" type="url"
-                        class="<%= locals.errors && errors.profileImage ? 'is-invalid' : null %>" name="profileImage" 
-                        value="<%= locals.oldData ? oldData.profileImage : null %>" placeholder="URL de Imagen de Perfil" />
-                    <% if (locals.errors && errors.profileImage) {%>
-                    <span><%= errors.profileImage.msg %></span>
-                    <% }%>
-                </p>
-                <p class="form-entry">
                     <label for="email">Correo Electrónico</label>
                     <input id="email" type="email" class="<%= locals.errors && errors.email ? 'is-invalid' : null %>"
                         name="email" value="<%= locals.oldData ? oldData.email : null %>"
@@ -57,11 +48,13 @@
                     <% }%>
                 </p>
                 <p class="form-entry p1">
-                    <input id="acceptedTerms" type="checkbox"
-                        class="<%= locals.errors && errors.acceptedTerms ? 'is-invalid' : null %>"
-                        name="acceptedTerms" />
-                    <label for="acceptedTerms" class="l1">Acepto términos y condiciones</label>
+                    <p class="l1">Acepto términos y condiciones</p>
+                    <input type="radio" id="acceptedTerms" name="acceptedTerms" value="yes" checked/>
+                    <label for="acceptedTerms">Sí</label>
+                    <input type="radio" id="termsNotAccepted" name="acceptedTerms" value="no"/>
+                    <label for="termsNotAccepted">No</label>
                     <% if (locals.errors && errors.acceptedTerms) {%>
+                        <br/>
                     <span><%= errors.acceptedTerms.msg %></span>
                     <% }%>
                 </p>

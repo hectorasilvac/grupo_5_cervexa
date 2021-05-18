@@ -1,35 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head') %>
+
 <body>
   <%- include('../partials/header') %>
-
   <main class="container-a bg-quinary ">
     <section id="account-profile" class="container-b">
       <header class="container-a mb-4">
-        <h3 class="text-b">Bienvenido/a, <%= user?.first_name %> <%= user?.last_name %></h3>
+        <h3 class="text-b">Bienvenido/a, <%= user?.first_name %></h3>
         <a href="/users/logout" class="text-a mt-d5">Cerrar Sesión</a>
       </header>
       <details id="my-orders" class="container-c">
         <summary class="accordion-a">Mis Pedidos</summary>
         <p>Pedidos AQUÍ</p>
       </details>
-      <details id="account-information" class="container-c <%= user?.adminPermission ? null : 'bb-secondary'; %>">
+      <details id="account-information" 
+      class="container-c <%= user?.adminPermission ? null : 'bb-secondary'; %>"
+      <%= locals.errors || locals.success ? 'open' : null %>>
         <summary class="accordion-a">Información de Cuenta</summary>
-        <p>Configuración AQUÍ</p>
+        <% if(locals.success && success.msg) { %>
+          <p class="alert alert--success"><%= success?.msg  %></p>
+        <% } %>
+        <form action="/users/<%= user?.id %>?_method=PUT" method="POST" class="container-f my-1d3">
+          <p id="firstNameInput" class="container-i">
+            <label for="firstName" class="text-c mb-d3">Nombre</label>
+            <input id="firstName" name="firstName" type="text"
+              class="input-b <%= locals.errors && errors?.firstName ? 'is-invalid' : null %>" 
+              value="<%= locals.oldData && oldData?.firstName ? oldData.firstName: user?.first_name %>">
+              <% if (locals.errors && errors.firstName) { %>
+                <span class="error-message"><%= errors.firstName.msg %></span>
+              <% } %>
+          </p>
+          <p id="lastNameInput" class="container-i">
+            <label for="lastName" class="text-c mb-d3">Apellido</label>
+            <input id="lastName" name="lastName" type="text" class="input-b <%= locals.errors && errors?.lastName ? 'is-invalid' : null %>" 
+            value="<%= locals.oldData && oldData?.lastName ? oldData.lastName: user?.last_name %>">
+            <% if (locals.errors && errors.lastName) { %>
+              <span class="error-message"><%= errors.lastName.msg %></span>
+            <% } %>
+          </p>
+          <p id="emailInput" class="container-i">
+            <label for="email" class="text-c mb-d3">Correo Electrónico</label>
+            <input id="email" name="email" type="email" class="input-b <%= locals.errors && errors?.email ? 'is-invalid' : null %>" 
+            value="<%= locals.oldData && oldData?.email ? oldData.email: user?.email %>">
+            <% if (locals.errors && errors.email) { %>
+              <span class="error-message"><%= errors.email.msg %></span>
+            <% } %>
+          </p>
+          <p id="passwordInput" class="container-i">
+            <label for="password" class="text-c mb-d3">Contraseña</label>
+            <input id="password" name="password" type="password" class="input-b <%= locals.errors && errors?.password ? 'is-invalid' : null %>"
+            value="<%= locals.oldData && oldData?.password ? oldData.password : 'encrypted' %>"/>
+            <% if (locals.errors && errors.password) { %>
+              <span class="error-message"><%= errors.password.msg %></span>
+            <% } %>
+          </p>
+          <p id="rankIdInput" class="container-i">
+            <label for="rankId" class="text-c mb-d3">Cargo</label>
+            <select id="rankId" name="rankId" class="input-b">
+              <option value="1" <%= user?.rank_id === 1 ? 'selected' : null %>>Administrador</option>
+              <option value="2" <%= user?.rank_id === 2 ? 'selected' : null %>>Coordinador</option>
+              <option value="3" <%= user?.rank_id === 3 ? 'selected' : null %>>Supervisor</option>
+              <option value="4" <%= user?.rank_id === 4 ? 'selected' : null %>>Cliente</option>
+            </select>
+          </p>
+          <button type="submit" class="button-b size-1d3">Guardar</button>
+        </form>
       </details>
       <% if(user?.adminPermission) { %>
-        <details id="manager-controls" class="container-c bb-secondary" open>
-          <summary class="accordion-a">Panel de Administrador</summary>
-          <p class="container-d">
-            <a class="button-a" href="/products">Gestión de Productos</a>
-            <a class="button-a" href="#">Gestión de Usuarios</a>
-          </p>
-        </details>
-        <% } %>
+      <details id="manager-controls" class="container-c bb-secondary">
+        <summary class="accordion-a">Panel de Administrador</summary>
+        <div class="container container--quaternary">
+          <a class="button button--primary" href="/products">Gestión de Productos</a>
+          <a class="button button--primary" href="/users">Gestión de Usuarios</a>
+        </div>
+      </details>
+      <% } %>
     </section>
   </main>
-
   <%- include('../partials/footer') %>
 </body>
+
 </html>

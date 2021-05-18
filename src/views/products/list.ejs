@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%- include('../partials/head') %>
-<body>
-    <%- include('../partials/header') %>
-    <main class="container-a bg-quinary">
-        <section class="container-b">
-          <header>
-            <h3>Gestión de Productos</h3>
-            <p>
-              <a href="/products/create" class="button-a">Crear Producto</a>
-              <input type="search">
-            </p>
-          </header>
-          <div id="product-list" class="container-f">
-            <% products.forEach( product => { %>
-              <article class="product-details">
-                <a href="/products/<%= product.id %>" data-1>
-                <div class="item-image-container">
-                  <img class="item-image" src="/images/products/<%= product.images[0].url %>" alt="product.images[0].alt" />
-                </div>
-                <p data-1><%= product.category %></p>
-                <h3 class="item-title"><%= `${product.name} ${product.content}${product.measure.value}`  %></h3>
-                <p class="item-number">$<%= product?.inventory.salePrice?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")  %></p>
-              </a>
-                <button class="btn-primary mt-1">COMPRAR</button>
-              </article>
-              <% }); %>
-          </div>
-        </section>
-    </main>
-    
+<%- include('../partials/head') %>
 
-    <%- include('../partials/footer') %>
+<body>
+  <%- include('../partials/header') %>
+  <main class="container container--primary">
+    <section class="container container--secondary">
+      <header class="header header--primary">
+        <h2>Gestión de Productos</h2>
+          <a href="/products/create" class="button button--primary">Crear un Producto</a>
+      </header>
+      <div class="container container--tertiary">
+        <table class="table table--primary">
+          <thead class="table__header">
+            <tr class="row">
+              <th class="row__item row__item--primary">Imagen</th>
+              <th class="row__item row__item--primary">Producto</th>
+              <th class="row__item row__item--primary">Precio</th>
+              <th class="row__item row__item--primary">Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% products.forEach( product => { %>
+            <tr class="row container container--quinary">
+              <td class="row__item--secondary">
+                <img class="image image--primary" src="/images/products/<%= product.images[0].url %>" 
+                alt="<%= product.images[0].alt %>" />
+              </td>
+              <td class="row__item--secondary"><%= product.name %></td>
+              <td class="row__item--secondary">$<%= product?.inventory.salePrice?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")  %></td>
+              <td class="row__item--secondary">
+                <div class="container container--quaternary">
+                  <a href="/products/<%= product.id %>" class="button button--primary">Ver</a>
+                  <a href="/products/<%= product.id %>/edit" class="button button--primary">Editar</a>
+                  <form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+                    <button type="submit" id="delete-product" class="button button--primary">Eliminar</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+
+  <%- include('../partials/footer') %>
 </body>
+
 </html>

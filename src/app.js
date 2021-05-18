@@ -26,8 +26,8 @@ app.use(session({
 app.use(userLoggedMiddleware);
 
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Servidor exitosamente inciado en el pruerto 3000.');
+app.listen(process.env.PORT || 4000, () => {
+    console.log('Servidor exitosamente inciado en el pruerto 4000.');
 });
 
 // Routes
@@ -36,11 +36,14 @@ const cartRouter = require('./routes/cartRoute');
 const mainRouter = require('./routes/mainRoute');
 const productsRouter = require('./routes/productsRoute');
 const usersRouter = require('./routes/usersRoute');
+const categoriesRouter = require('./routes/categoriesRoute');
 
 app.use('/', mainRouter);
 app.use('/cart', cartRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
+app.use('/categories', categoriesRouter);
+
 app.use((req, res, next) => {
     res.status(404).send('No se ha encontrado la página requerida.');
     next();

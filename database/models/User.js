@@ -22,11 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         email: {
             type: DataTypes.STRING(255),
             allowNull: false
-        },
-        profile_image: {
-            type: DataTypes.STRING(255),
-            // allowNull: false
-        },
+        }
     };
     const config = {
         timestamps: false

@@ -1,8 +1,9 @@
+/* eslint-disable radix */
 const bcryptjs = require('bcryptjs');
 const path = require('path');
 const { validationResult } = require('express-validator');
 const db = require('../../database/models');
-const { errorsExist, existsInDB, returnAMethod, showErrors } = require('../utilities');
+const { existsInDB, errorsExist, returnAMethod, showErrors } = require('../utilities');
 
 const usersController = {
     create: ({req, res, variables = null}) => {
@@ -107,6 +108,7 @@ const usersController = {
 
         // Store only non-sensitive user information
         const userInfo = {
+            id: emailToLogin.id,
             first_name: emailToLogin.first_name,
             last_name: emailToLogin.last_name,
             email: emailToLogin.email,
@@ -124,7 +126,7 @@ const usersController = {
         
         return res.redirect('/users/profile');
     },
-    profile: (req, res) => {
+    profile: (req, res, variables = null) => {
         const user = req?.session?.userLogged;
         const adminPermission = 1;
 
@@ -134,14 +136,78 @@ const usersController = {
         } else {
             user.admninPermission = false;
         }
-
         const title = 'Perfil | Cervexa';
-        res.render('users/profile', {user, title})
+        res.render('users/profile', {user, title, ...variables});
     },
     logout: (req, res) => {
         res.clearCookie('userEmail');
         req.session.destroy();
         res.redirect('/');
+    },
+    // View the user management panel
+    showAll: async (req, res) => {
+        const includes = {
+            include: ['rank']
+        };
+        const getAllUsers = db.User.findAll({...includes});
+        const users = await getAllUsers;
+
+        const title = 'Listado de Productos | Merkar';
+        res.render('users/list', {
+            title,
+            users
+        });
+    },
+    // Edit user information
+    edit: (req, res) => {
+        const title = 'Editar Usuario'
+        res.render('users/edit', {title})
+    },
+    // Update the user information
+    save: async (req, res) => {
+        const id = parseInt(req.params.id);
+        const validationParameters = {req, validationResult};
+        const goToProfile = returnMethod(usersController.profile);
+        const variablesToShow = showErrors(validationParameters);
+        
+        // Verify if the edit form has errors
+        const thereAreErrors = errorsExist(validationParameters);
+        if (thereAreErrors) {
+            const variables = variablesToShow();
+            return goToProfile({req, res, variables});
+        }
+
+        // If no errors are found, proceed with updating user information
+        try {
+            // Check if the password is different from 'encrypted',
+            // If so, update all the information including the password,
+            // otherwhise, do not update the password.
+            if (req.body.password !== 'encrypted') {
+                const updateUser = await db.User.update({
+                    first_name: req.body.firstName.toLowerCase(),
+                    last_name: req.body.lastName.toLowerCase(),
+                    email: req.body.email.toLowerCase(),
+                    password: bcryptjs.hashSync(req.body.password, 10),
+                }, {
+                    where: { id }
+                });
+            } else {
+                const updateUser = await db.User.update({
+                    first_name: req.body.firstName.toLowerCase(),
+                    last_name: req.body.lastName.toLowerCase(),
+                    email: req.body.email.toLowerCase(),
+                }, {
+                    where: { id }
+                });
+            }
+        } catch (err) {
+            throw new Error('Error al actualizar la información de usuario.');
+        }
+
+    const variables = {
+        success: { msg: 'La información se han actualizado correctamente.' }
+    }
+    return goToProfile({req, res, variables});
     }
 };
 

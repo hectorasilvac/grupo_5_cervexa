@@ -2,6 +2,10 @@ const General = {
     returnAMethod: (method) => ({...args}) => {
         method(args);
     },
+    returnMethod: (method) => ({...args}) => {
+        const { req, res, variables } = args;
+        method(req, res, variables);
+    },
     errorsExist: ({req, validationResult}) => {
         const validations = validationResult(req);
         const formHasErrors = validations.errors.length > 0;
