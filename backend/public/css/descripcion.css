@@ -1,0 +1,153 @@
+.main_details{
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;    
+    padding: 25px 0 25px 0;
+}
+
+.body_details{
+    font-family: 'Roboto', sans-serif;
+    /* background: #e5e5e5; */
+    background-color: white;
+}
+.site-header{
+    background-color: #f6f5f3;
+}
+
+.logo_button{
+    text-decoration: none;
+    color: #b59049;
+    font-family:'Unna', serif;
+    font-size: 18px;
+}
+
+.image_description{
+    display: flex;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+}
+
+.image_description img{
+    width: 70%;
+}
+
+.product_name{
+    display: flex;
+    color: #b59049;
+    justify-content: center;
+}
+
+.product_name h2{
+    margin: 16px 0 0 0;
+}
+
+.product_description{
+    display: flex;
+    text-align: justify;
+    justify-content: center;
+}
+
+.product_price{
+    display: flex;
+    justify-content: end;
+    font-size: 18px;
+    font-weight:bold;    
+}
+.product_price p{
+    transition: all 1s;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.button_car{
+    display: flex;
+    justify-self: end;
+}
+
+.button_car button{
+    width: 100%;
+    padding: 10px;
+    background-color: #b59049;
+    font-size: 17px;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: all 2s;
+}
+
+.button_car button:hover{
+    box-shadow: 3px 0px 20px rgba(181, 144, 73, 1);
+}
+
+.product_price p:hover{
+    box-shadow: 3px 0px 20px rgba(181, 144, 73, 1);
+    border-radius: 5px;
+}
+
+.right_description{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+/*? MEDIAQUERYS  */
+
+@media(min-width: 600px){
+    .main_details{
+        width: 70%;
+    }
+    .image_description img{
+        width: 60%;
+    }
+}
+
+@media(min-width: 768px){
+    .main_details{
+        width: 70%;
+        flex-direction: row;
+        padding: 25px 0 25px 0;
+    }
+    .image_description img{
+        width: 80%;        
+    }
+    .image_description{
+        justify-content: start;
+        width: 100%;
+        margin: 0;
+    }
+    .product_price{
+        width: 90%;
+    }
+    .product_description p{
+        font-size: 14px;
+        width: 90%;
+    }
+    .product_name{
+        width: 100%;
+        
+    }
+    .button_car {
+        width: 90%;
+        align-self: center;
+    }
+
+}
+@media(min-width:1200px){
+    .main_details{
+        width: 70%;
+    }
+    .product_description p{
+        font-size: 15px;
+    }
+    .product_price p{
+        font-size: 20px;
+    }
+    .product_name h2{
+        font-size: 20px;
+    }
+    .image_description{
+        width: 80%;
+    }
+}

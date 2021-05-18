@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body>
+  <%- include('./partials/header') %>
+  <main class="site-content">
+    <section class="main-banner">
+      <h2 hidden>Portada</h2>
+      <div class="banner-content">
+        <div class="image">
+        </div>
+        <div class="info">
+          <p>Decidid@ a descubrir</p>
+          <h3>NUEVOS LICORES</h3>
+          <p>Nuestro propósito para este nuevo año es descubrir y apoyar bebidas espirituosas únicas y difíciles de
+            encontrar. En esa búsqueda, queremos compartir con usted algunas de estos licores de edición limitada.</p>
+          <a role="button" href="#">EXPLORAR</a>
+        </div>
+      </div>
+    </section>
+    <section class="our-special-services container--senary">
+      <header class="section-header">
+        <p class="section-description">ENCUENTRA TU BEBIDA FAVORITA</p>
+        <h2 class="primary-title">DISFRUTA LA EXPERIENCIA</h2>
+      </header>
+      <div class="items-container">
+        <article class="item-details">
+          <i class="secondary-color fas fa-hand-holding-heart fa-3x"></i>
+          <h3 class="article-description">GUÍA DE REGALOS</h3>
+          <p class="article-info">Recomendaciones perfectas para hacer de cualquier fiesta una que siempre recordarán.
+          </p>
+        </article>
+        <article class="item-details">
+          <i class="secondary-color fas fa-pencil-alt fa-3x"></i>
+          <h3 class="article-description">GRABADO PERSONALIZADO</h3>
+          <p class="article-info">Recomendaciones perfectas para hacer de cualquier fiesta una que siempre recordarán.
+          </p>
+        </article>
+        <article class="item-details">
+          <i class="secondary-color fas fa-glass-cheers fa-3x"></i>
+          <h3 class="article-description">EDICIONES LIMITADAS</h3>
+          <p class="article-info">Reco cualquier fiesta una que siempre recordarán.</p>
+        </article>
+        <article class="item-details">
+          <i class="secondary-color fas fa-gift fa-3x"></i>
+          <h3 class="article-description">REGALOS CORPORATIVOS</h3>
+          <p class="article-info">Recomendaciones perfectas para hacer de cualquier fiesta una que siempre recordarán.
+          </p>
+        </article>
+      </div>
+    </section>
+    <section class="highlighted-banners container--senary">
+      <h2 hidden>Productos Especiales</h2>
+      <article class="highlighted-item hl-item1">
+        <h3 class="hl-name primary-title">RARO & EXCEPCIONAL</h3>
+        <p class="hl-description secondary-text">Explore licores excepcionales, sofisticados y de lujo.</p>
+      </article>
+      <article class="highlighted-item hl-item2">
+        <h3 class="hl-name primary-title">THE MACALLAN</h3>
+        <p class="hl-description secondary-text">Un Whisky para cualquier ocasión. Prueba The Mcallan.</p>
+      </article>
+    </section>
+    <section class="highlighted-products">
+      <div class="container--senary">
+        <header class="section-header">
+          <p class="section-description">EXPLORA NUESTROS</p>
+          <h2 class="primary-title">PRODUCTOS DESTACADOS</h2>
+        </header>
+        <div class="products-container">
+          <% products.forEach( product => { %>
+          <article class="product-details">
+            <a href="/products/<%= product.id %>" data-1>
+            <div class="item-image-container">
+              <img class="item-image" src="/images/products/<%= product.images[0].url %>" alt="product.images[0].alt" />
+            </div>
+            <p data-1><%= product.category %></p>
+            <h3 class="item-title"><%= `${product.name} ${product.content}${product.measure.value}`  %></h3>
+            <p class="item-number">$<%= product?.inventory.salePrice?.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.")  %></p>
+          </a>
+            <button class="btn-primary mt-1">COMPRAR</button>
+          </article>
+          <% }); %>
+        </div>
+      </div>
+    </section>
+    <section class="bottom-banners">
+      <h2 hidden>Productos Especiales</h2>
+      <article data-item="one">
+        <h3>Día de San Valentín</h3>
+        <p>No te puedes equivocar con estos regalos especiales de licores y dulces.</p>
+      </article>
+      <article data-item="two">
+        <h3>Espíritu Sagamore</h3>
+        <p>La calidad y la innovación se unen en este surtido de whiskies.</p>
+      </article>
+    </section>
+  </main>
+  <%- include('./partials/footer') %>
+</body>
+</html>
