@@ -5,9 +5,9 @@ import './styles/Menu.css';
 
 const Menu = ({ menuIsOpen, onToggleMenu, iconStyles }) => {
 
-    const fetchData = useCallback(() => {
-        fetch('')
-    });
+    // const fetchData = useCallback(() => {
+    //     fetch('')
+    // });
 
     const linksList = [
         {
