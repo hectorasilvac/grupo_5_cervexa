@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BiChevronRight } from 'react-icons/bi';
 import './styles/Menu.css';
 
-const Menu = ({ menuIsOpen, onToggleMenu }) => {
+const Menu = ({ menuIsOpen, onToggleMenu, iconStyles }) => {
 
     const fetchData = useCallback(() => {
         fetch('')
@@ -21,19 +21,16 @@ const Menu = ({ menuIsOpen, onToggleMenu }) => {
         }
     ];
 
-    if (!menuIsOpen) {
-        return null;
-    }
-
-    const iconStyles = {
-        color: "#b59049",
-        fontSize: "3rem"
-    };
+    if (!menuIsOpen) return null;
     
+    const menuContainer = document.getElementById('menu');
     return (
         ReactDOM.createPortal(
-            <nav id="MainMenu" className="container container-1">
-                <button onClick={ () => onToggleMenu(!menuIsOpen) }>Cerrar</button>
+            <nav className="main-menu">
+            <p>Hola Menu</p>
+            <button onClick={ () => onToggleMenu(!menuIsOpen) }>Cerrar</button>
+
+                {/* <button onClick={ () => onToggleMenu(!menuIsOpen) }>Cerrar</button>
                 <ul className="unordered-list">
                 { linksList.map( (link, i) => (
                     <li className="container container-2" key={i}>
@@ -41,9 +38,10 @@ const Menu = ({ menuIsOpen, onToggleMenu }) => {
                     <span><BiChevronRight style={iconStyles} /></span>
                     </li>
                     )) }
-                </ul>
+                </ul> */}
+
             </nav>,
-            document.getElementById('menu')
+            menuContainer
         )
     );
 }

@@ -1,3 +1,5 @@
+/* Default */
+
 * {
     box-sizing: border-box;
     margin: 0; 
@@ -20,28 +22,29 @@
     font-family: var(--primary-font);
 }
 
-#SiteHeader {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto;
-    grid-template-areas: "MobileMenu MainTitle MobileCart";
+/* Styles */
+
+.container {
+    display: flex;
+    justify-content: center;
 }
 
-#MainTitle {
-    grid-area: MainTitle;
-}
-
-#MobileMenu {
-    grid-area: MobileMenu;
-}
-
-#MobileCart {
-    grid-area: MobileCart;
-}
-
-.bg-primary {
+.container--painted {
     background-color: var(--primary-color);
 }
+
+.container--centered {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 120rem;
+    padding: 1.5rem;
+}
+
+
+/*
+
 
 .container {
     align-items: center;
@@ -88,4 +91,4 @@
 
 .unordered-list {
     list-style: none;
-}
+} */

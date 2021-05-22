@@ -1,13 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import Header from "./Header";
 
 const Layout = ({ children }) => {
-    
-    let [menuIsOpen, setMenuIsOpen] = useState(false);
 
     return (
         <React.Fragment>
-            <Header menuIsOpen={ menuIsOpen } onToggleMenu={ setMenuIsOpen } />
+            <Header />
             { children }
         </React.Fragment>
     )
