@@ -1,13 +1,23 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BiChevronRight } from 'react-icons/bi';
 import './styles/Menu.css';
 
-const Menu = ({ menuIsOpen, onToggleMenu, iconStyles }) => {
+const Menu = ({ isOpen, onToggle, iconStyles }) => {
 
-    // const fetchData = useCallback(() => {
-    //     fetch('')
-    // });
+    let [categoryList, setCategoryList] = useState([]);
+
+    const fetchCategories = useCallback(() => {
+        fetch('http://api.cvx.hector.com.co/categories')
+        .then(response => response.json())
+        .then(({data}) => {
+            setCategoryList(data)
+        })
+    }, []);
+
+    useEffect(() => {
+        fetchCategories()
+    }, [fetchCategories]);
 
     const linksList = [
         {
@@ -21,16 +31,25 @@ const Menu = ({ menuIsOpen, onToggleMenu, iconStyles }) => {
         }
     ];
 
-    if (!menuIsOpen) return null;
+    if (!isOpen) return null;
     
     const menuContainer = document.getElementById('menu');
     return (
         ReactDOM.createPortal(
             <nav className="main-menu">
             <p>Hola Menu</p>
-            <button onClick={ () => onToggleMenu(!menuIsOpen) }>Cerrar</button>
+            <button onClick={ () => onToggle(!isOpen) }>Cerrar</button>
+            {/* <ul>
+                {
+                    categoryList.map((category, i) => (
+                        <li key={i}>
+                            {category.name}
+                        </li>
+                    ))
+                }
+            </ul> */}
 
-                {/* <button onClick={ () => onToggleMenu(!menuIsOpen) }>Cerrar</button>
+                {/* <button onClick={ () => onToggle(!isOpen) }>Cerrar</button>
                 <ul className="unordered-list">
                 { linksList.map( (link, i) => (
                     <li className="container container-2" key={i}>

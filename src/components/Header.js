@@ -27,7 +27,7 @@ const Header = () => {
                    <BiCartAlt style={iconStyles} />
                </div>
            </div>
-           <Menu menuIsOpen={menuIsOpen} onToggleMenu={setMenuIsOpen} iconStyles={iconStyles} />
+           <Menu isOpen={menuIsOpen} onToggle={setMenuIsOpen} iconStyles={iconStyles} />
         </header>
     )
 }
